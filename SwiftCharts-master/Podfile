@@ -1,0 +1,29 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Examples' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Examples
+  pod 'PieCharts’
+  pod 'Firebase/Core’
+  pod 'Firebase/Messaging’
+  pod 'Firebase/Database’
+end
+
+target 'SwiftCharts' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SwiftCharts
+
+end
+
+target 'SwiftCharts tvOS' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SwiftCharts tvOS
+
+end
