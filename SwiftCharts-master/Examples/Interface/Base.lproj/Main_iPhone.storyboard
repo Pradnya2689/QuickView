@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hqo-9w-ui4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hqo-9w-ui4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -147,6 +147,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUt-xh-2TG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4519" y="-632"/>
+        </scene>
+        <!--Cubic Line View Controller-->
+        <scene sceneID="o52-Ud-yAd">
+            <objects>
+                <viewController storyboardIdentifier="cubicLine" id="D7n-FJ-fLH" customClass="CubicLineViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iTg-ID-iTz"/>
+                        <viewControllerLayoutGuide type="bottom" id="STe-Gh-33h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TvU-xs-Xrz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMV-Ix-ubi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5194" y="-635"/>
         </scene>
         <!--Pie Chart Test View Controller-->
         <scene sceneID="LBE-3r-fTN">
