@@ -401,7 +401,7 @@
 		C3090F9A1E8401CE0042F561 /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleViewController.swift; path = ../SampleViewController.swift; sourceTree = "<group>"; };
 		C3578DF71E85251D0035C238 /* PieChartTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieChartTestViewController.swift; path = ../PieChartTestViewController.swift; sourceTree = "<group>"; };
 		C3578DF91E8931350035C238 /* LineChartTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineChartTestViewController.swift; path = ../LineChartTestViewController.swift; sourceTree = "<group>"; };
-		C3C17F291E9236080015AB17 /* CubicLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubicLineViewController.swift; sourceTree = "<group>"; };
+		C3C17F291E9236080015AB17 /* CubicLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CubicLineViewController.swift; path = ../CubicLineViewController.swift; sourceTree = "<group>"; };
 		C3C7879E1E8BB94200AF6E18 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "../MyriadPro-Bold.otf"; sourceTree = "<group>"; };
 		C3C7879F1E8BB94200AF6E18 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "../MyriadPro-It.otf"; sourceTree = "<group>"; };
 		C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "../MyriadPro-Regular.otf"; sourceTree = "<group>"; };
@@ -560,6 +560,7 @@
 				C3090F971E83AC620042F561 /* BarChartTestViewController.swift */,
 				C3578DF71E85251D0035C238 /* PieChartTestViewController.swift */,
 				C3578DF91E8931350035C238 /* LineChartTestViewController.swift */,
+				C3C17F291E9236080015AB17 /* CubicLineViewController.swift */,
 				C3C7879E1E8BB94200AF6E18 /* MyriadPro-Bold.otf */,
 				C3C7879F1E8BB94200AF6E18 /* MyriadPro-It.otf */,
 				C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */,
@@ -583,7 +584,6 @@
 		06405D9C1B8AA74700A689FF = {
 			isa = PBXGroup;
 			children = (
-				C3C17F291E9236080015AB17 /* CubicLineViewController.swift */,
 				06405DA81B8AA74700A689FF /* SwiftCharts */,
 				06342AC21B8AAD7F001C9F5D /* Examples */,
 				06405DA71B8AA74700A689FF /* Products */,
