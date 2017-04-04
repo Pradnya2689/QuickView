@@ -52,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let second = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewController(withIdentifier: "piechart") as! PieChartTestViewController
          let nav1 = UINavigationController.init(rootViewController: second)
 //        
-        let third = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewController(withIdentifier: "linechart") as! LineChartTestViewController
+//        let third = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewController(withIdentifier: "linechart") as! LineChartTestViewController
+        let third = UIStoryboard(name: "Main_iPhone", bundle: nil).instantiateViewController(withIdentifier: "cubicLine") as! CubicLineViewController
         let nav2 = UINavigationController.init(rootViewController: third)
         
 //        let first = BarChartTestViewController(nibName: "BarChartTestViewController", bundle: nil)
