@@ -182,7 +182,6 @@
 		3236AD6FE0B0C62D4674E627 /* Pods_SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8167F32B9F102AF5D461188 /* Pods_SwiftCharts.framework */; };
 		43649A691C7AC7E300523D7F /* ChartPointsTouchHighlightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43649A681C7AC7E300523D7F /* ChartPointsTouchHighlightLayer.swift */; };
 		437C78521D1EF923003C19C3 /* MultiTrackerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437C78511D1EF923003C19C3 /* MultiTrackerExample.swift */; };
-		47EB32791F8C2B41B1B45B92 /* Pods_Examples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45614FAF19FDFF49939A4BA8 /* Pods_Examples.framework */; };
 		4C87221B1E8D27FF004ECD7C /* PieCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C87221A1E8D27FF004ECD7C /* PieCharts.framework */; };
 		4C87221D1E8D46BD004ECD7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C87221C1E8D46BD004ECD7C /* GoogleService-Info.plist */; };
 		6A3A67C41E57318A00B5354F /* RangedAxisExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3A67C31E57318A00B5354F /* RangedAxisExample.swift */; };
@@ -196,6 +195,7 @@
 		C3C787A21E8BBA0400AF6E18 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = C3C7879F1E8BB94200AF6E18 /* MyriadPro-It.otf */; };
 		C3C787A31E8BBA0400AF6E18 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */; };
 		CA6EE45F71DDB86BD3F60D67 /* Pods_SwiftCharts_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39860938A0DBCA142A59F8C1 /* Pods_SwiftCharts_tvOS.framework */; };
+		CBFF99D88F684E040226E665 /* Pods_Examples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45614FAF19FDFF49939A4BA8 /* Pods_Examples.framework */; };
 		EB08E2331B93A15E0030081C /* ChartAxisValueDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB08E2321B93A15E0030081C /* ChartAxisValueDouble.swift */; };
 		EB093E5F1D2141EF001157BD /* ChartAxisValuesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB093E5E1D2141EF001157BD /* ChartAxisValuesGenerator.swift */; };
 		EB093E611D21421D001157BD /* ChartAxisValuesGeneratorFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB093E601D21421D001157BD /* ChartAxisValuesGeneratorFixed.swift */; };
@@ -381,9 +381,8 @@
 		06405E0B1B8AA81D00A689FF /* HandlingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandlingView.swift; sourceTree = "<group>"; };
 		06405E0C1B8AA81D00A689FF /* InfoBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoBubble.swift; sourceTree = "<group>"; };
 		067510C01B8AB36500A37F64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		09F64095879222DEE36911EF /* Pods-SwiftCharts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts/Pods-SwiftCharts.debug.xcconfig"; sourceTree = "<group>"; };
+		078E295B5CD314633018F8FD /* Pods-SwiftCharts tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts tvOS/Pods-SwiftCharts tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		22E7020F1BF5B8EC00C19675 /* SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F009C70A46D7FA4794431F3 /* Pods-Examples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.debug.xcconfig"; sourceTree = "<group>"; };
 		39860938A0DBCA142A59F8C1 /* Pods_SwiftCharts_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCharts_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43649A681C7AC7E300523D7F /* ChartPointsTouchHighlightLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPointsTouchHighlightLayer.swift; sourceTree = "<group>"; };
 		437C78511D1EF923003C19C3 /* MultiTrackerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiTrackerExample.swift; sourceTree = "<group>"; };
@@ -392,11 +391,11 @@
 		4C87221C1E8D46BD004ECD7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C87221E1E8D4857004ECD7C /* Examples.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Examples.entitlements; sourceTree = "<group>"; };
 		580AFD3B1DC2396B007AF8E6 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		69F8A2466D87F4D309B486DB /* Pods-SwiftCharts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts/Pods-SwiftCharts.release.xcconfig"; sourceTree = "<group>"; };
+		61E6E419BFAE07E54911B9E7 /* Pods-Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.release.xcconfig"; sourceTree = "<group>"; };
 		6A3A67C31E57318A00B5354F /* RangedAxisExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangedAxisExample.swift; sourceTree = "<group>"; };
 		6A3A67C51E576A6000B5354F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		A30159EA860D0F715C16AFCD /* Pods-Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.release.xcconfig"; sourceTree = "<group>"; };
-		B793646C60155EDDDF5FA9EB /* Pods-SwiftCharts tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts tvOS/Pods-SwiftCharts tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8C3DE6D1AB3073206E1E5339 /* Pods-SwiftCharts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts/Pods-SwiftCharts.debug.xcconfig"; sourceTree = "<group>"; };
+		9D887FC52276C212D966025C /* Pods-Examples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.debug.xcconfig"; sourceTree = "<group>"; };
 		C3090F971E83AC620042F561 /* BarChartTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarChartTestViewController.swift; path = ../BarChartTestViewController.swift; sourceTree = "<group>"; };
 		C3090F9A1E8401CE0042F561 /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleViewController.swift; path = ../SampleViewController.swift; sourceTree = "<group>"; };
 		C3578DF71E85251D0035C238 /* PieChartTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieChartTestViewController.swift; path = ../PieChartTestViewController.swift; sourceTree = "<group>"; };
@@ -406,6 +405,8 @@
 		C3C7879F1E8BB94200AF6E18 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "../MyriadPro-It.otf"; sourceTree = "<group>"; };
 		C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "../MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		C8167F32B9F102AF5D461188 /* Pods_SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED4ED5E3C2A0A3AFA2C1CE7 /* Pods-SwiftCharts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts/Pods-SwiftCharts.release.xcconfig"; sourceTree = "<group>"; };
+		DB5E305E5517DD21B68FB021 /* Pods-SwiftCharts tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts tvOS/Pods-SwiftCharts tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		EB08E2321B93A15E0030081C /* ChartAxisValueDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAxisValueDouble.swift; sourceTree = "<group>"; };
 		EB093E5E1D2141EF001157BD /* ChartAxisValuesGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAxisValuesGenerator.swift; sourceTree = "<group>"; };
 		EB093E601D21421D001157BD /* ChartAxisValuesGeneratorFixed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAxisValuesGeneratorFixed.swift; sourceTree = "<group>"; };
@@ -459,7 +460,6 @@
 		EBDB71AB1D79CA1300E38374 /* ChartViewAlphaAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewAlphaAnimator.swift; sourceTree = "<group>"; };
 		EBDB71AD1D79DA4C00E38374 /* ChartViewAnimators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewAnimators.swift; sourceTree = "<group>"; };
 		EBDB71AF1D79DBDD00E38374 /* ChartViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewAnimator.swift; sourceTree = "<group>"; };
-		FA5468CAFBD0F0CC94E8A51B /* Pods-SwiftCharts tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts tvOS/Pods-SwiftCharts tvOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,7 +469,7 @@
 			files = (
 				4C87221B1E8D27FF004ECD7C /* PieCharts.framework in Frameworks */,
 				062D23AB1B8AAE780017ABB8 /* SwiftCharts.framework in Frameworks */,
-				47EB32791F8C2B41B1B45B92 /* Pods_Examples.framework in Frameworks */,
+				CBFF99D88F684E040226E665 /* Pods_Examples.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,8 +587,8 @@
 				06405DA81B8AA74700A689FF /* SwiftCharts */,
 				06342AC21B8AAD7F001C9F5D /* Examples */,
 				06405DA71B8AA74700A689FF /* Products */,
-				7DDAE1960A95741A6BB09AE2 /* Pods */,
 				8D012A0E6DCCD5E950B714DE /* Frameworks */,
+				17D4389275FF89D67395F9E9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -774,15 +774,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7DDAE1960A95741A6BB09AE2 /* Pods */ = {
+		17D4389275FF89D67395F9E9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2F009C70A46D7FA4794431F3 /* Pods-Examples.debug.xcconfig */,
-				A30159EA860D0F715C16AFCD /* Pods-Examples.release.xcconfig */,
-				09F64095879222DEE36911EF /* Pods-SwiftCharts.debug.xcconfig */,
-				69F8A2466D87F4D309B486DB /* Pods-SwiftCharts.release.xcconfig */,
-				B793646C60155EDDDF5FA9EB /* Pods-SwiftCharts tvOS.debug.xcconfig */,
-				FA5468CAFBD0F0CC94E8A51B /* Pods-SwiftCharts tvOS.release.xcconfig */,
+				9D887FC52276C212D966025C /* Pods-Examples.debug.xcconfig */,
+				61E6E419BFAE07E54911B9E7 /* Pods-Examples.release.xcconfig */,
+				8C3DE6D1AB3073206E1E5339 /* Pods-SwiftCharts.debug.xcconfig */,
+				CED4ED5E3C2A0A3AFA2C1CE7 /* Pods-SwiftCharts.release.xcconfig */,
+				078E295B5CD314633018F8FD /* Pods-SwiftCharts tvOS.debug.xcconfig */,
+				DB5E305E5517DD21B68FB021 /* Pods-SwiftCharts tvOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1484,7 +1484,7 @@
 /* Begin XCBuildConfiguration section */
 		06342AE01B8AAD7F001C9F5D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F009C70A46D7FA4794431F3 /* Pods-Examples.debug.xcconfig */;
+			baseConfigurationReference = 9D887FC52276C212D966025C /* Pods-Examples.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1500,8 +1500,8 @@
 				INFOPLIST_FILE = "Examples/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.IngramMicroGlobal2;
-				PRODUCT_NAME = "Quick View";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.imquickview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -1510,7 +1510,7 @@
 		};
 		06342AE11B8AAD7F001C9F5D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A30159EA860D0F715C16AFCD /* Pods-Examples.release.xcconfig */;
+			baseConfigurationReference = 61E6E419BFAE07E54911B9E7 /* Pods-Examples.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1522,8 +1522,8 @@
 				INFOPLIST_FILE = "Examples/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.IngramMicroGlobal2;
-				PRODUCT_NAME = "Quick View";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.imquickview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -1633,7 +1633,7 @@
 		};
 		06405DBD1B8AA74700A689FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09F64095879222DEE36911EF /* Pods-SwiftCharts.debug.xcconfig */;
+			baseConfigurationReference = 8C3DE6D1AB3073206E1E5339 /* Pods-SwiftCharts.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1657,7 +1657,7 @@
 		};
 		06405DBE1B8AA74700A689FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69F8A2466D87F4D309B486DB /* Pods-SwiftCharts.release.xcconfig */;
+			baseConfigurationReference = CED4ED5E3C2A0A3AFA2C1CE7 /* Pods-SwiftCharts.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1680,7 +1680,7 @@
 		};
 		22E702141BF5B8EC00C19675 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B793646C60155EDDDF5FA9EB /* Pods-SwiftCharts tvOS.debug.xcconfig */;
+			baseConfigurationReference = 078E295B5CD314633018F8FD /* Pods-SwiftCharts tvOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
@@ -1705,7 +1705,7 @@
 		};
 		22E702151BF5B8EC00C19675 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA5468CAFBD0F0CC94E8A51B /* Pods-SwiftCharts tvOS.release.xcconfig */;
+			baseConfigurationReference = DB5E305E5517DD21B68FB021 /* Pods-SwiftCharts tvOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
