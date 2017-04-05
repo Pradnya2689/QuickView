@@ -155,6 +155,22 @@ private struct MyQuantity {
             item2 = MyItem(name: "CD", quantity: quantityAverage, value: 568851)
             item3 = MyItem(name: "DU", quantity: quantityLow, value: 16844)
             item4 = MyItem(name: "CO", quantity: quantityLow, value: 8587)
+            
+//                        vals = [
+//                            ("AC", 01),
+//                            ("HS", 9),
+//                            ("CD", 4),
+//                            ("DU", 8),
+//                            ("CO", 7)
+//                            //("PP", 140)
+//            
+//                        ]
+//            
+//                        item0 = MyItem(name: "AC", quantity: quantityVeryHigh, value:1)
+//                        item1 = MyItem(name: "HS", quantity: quantityHigh, value: 9)
+//                        item2 = MyItem(name: "CD", quantity: quantityAverage, value: 4)
+//                        item3 = MyItem(name: "DU", quantity: quantityLow, value: 8)
+//                        item4 = MyItem(name: "CO", quantity: quantityLow, value: 7)
         
         }
         
@@ -184,13 +200,22 @@ private struct MyQuantity {
         if(maxVal <= 10){
             
             result = 10
-            scale = result / 10
+            scale = 1
             
             print(result)
             print(scale)
             
-        }else{
+        }else if(maxVal <= 1){
             
+            result = 1
+            scale = 0.1
+            
+            print(result)
+            print(scale)
+            
+        }
+        else{
+        
             var maxCnt = maxVal
             var cnt = 0
             var maxValue : CGFloat = 0.0
@@ -216,17 +241,17 @@ private struct MyQuantity {
             
             
             
-            if(maxValue > 5.0){
+            //if(maxValue > 5.0){
                 
-                ceilVal = 10.0
+                //ceilVal = 10.0
                 result = Float(ceilVal) * Float(multipler)
                 
-            }else{
-                
-                ceilVal = 5.0
-                result = Float(ceilVal) * Float(multipler)
-                
-            }
+//            }else{
+//                
+//                ceilVal = 5.0
+//                result = Float(ceilVal) * Float(multipler)
+//                
+//            }
             
             print(result)
             
@@ -234,7 +259,7 @@ private struct MyQuantity {
             
             
             print(scale)
-        }
+      }
 
         
         
@@ -349,8 +374,8 @@ private struct MyQuantity {
             let label = HandlingLabel()
             //label.backgroundColor = UIColor.black
             let pos = chartPointModel.chartPoint.y.scalar > 0
-            
-            label.text = "\(formatter.string(from: NSNumber(value: chartPointModel.chartPoint.y.scalar))!)"
+            let testNSNumber: NSNumber = NSNumber(value: Float(vals[chartPointModel.index].val))
+            label.text = "\(formatter.string(from:  testNSNumber)!)"
             label.font = ExamplesDefaults.labelFont
             label.sizeToFit()
             print(pos)
