@@ -60,7 +60,7 @@ open class ChartCoordsSpace {
     open fileprivate(set) var xLowAxesLayers: [ChartAxisLayer] = []
     open fileprivate(set) var xHighAxesLayers: [ChartAxisLayer] = []
 
-    /**
+    /*
      A convenience initializer with default axis layer generators
 
      - parameter chartSettings: The chart layout settings
