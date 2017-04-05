@@ -111,7 +111,7 @@ class BarChartTestViewController: UIViewController {
                 ("HS", 1589544),
                 ("CD", 726289),
                 ("DU", 86640),
-                ("CO", 62482)
+                ("CO", 62482),
                 //("PP", 140)
                 
             ]
@@ -121,6 +121,7 @@ class BarChartTestViewController: UIViewController {
             item2 = MyItem(name: "CD", quantity: quantityAverage, value: 726289)
             item3 = MyItem(name: "DU", quantity: quantityLow, value: 86640)
             item4 = MyItem(name: "CO", quantity: quantityLow, value: 62482)
+            //item5 = MyItem(name: "PP", quantity: quantityLow, value: 140)
         }else{
             vals = [
                 ("AC", 518358),
@@ -137,6 +138,7 @@ class BarChartTestViewController: UIViewController {
             item2 = MyItem(name: "CD", quantity: quantityAverage, value: 568851)
             item3 = MyItem(name: "DU", quantity: quantityLow, value: 16844)
             item4 = MyItem(name: "CO", quantity: quantityLow, value: 8587)
+        
         }
         
         let chartPoints1: [ChartPoint] = [item0, item1, item2, item3, item4].enumerated().map {index, item in
@@ -159,11 +161,70 @@ class BarChartTestViewController: UIViewController {
         print(minVal)
         print(maxVal)
         
+        var result:Float = 0.0
+        var scale :Float = 0.0
         
-        let axisScale = (Int(maxVal-minVal)/(vals.count))
-        print(axisScale)
+        if(maxVal <= 10){
+            
+            result = 10
+            scale = result / 10
+            
+            print(result)
+            print(scale)
+            
+        }else{
+            
+            var maxCnt = maxVal
+            var cnt = 0
+            var maxValue : CGFloat = 0.0
+            while (true){
+                
+                print(maxCnt)
+                maxCnt = maxCnt / 10
+                
+                if(maxCnt < 1){
+                    break
+                }
+                cnt += 1
+                maxValue = CGFloat(maxCnt)
+                
+            }
+            
+            print(maxValue)
+            print(cnt)
+            var ceilVal = ceilf(Float(maxValue))
+            print(ceilVal)
+            
+            var multipler = pow(10, Float(cnt)) as Float
+            
+            
+            
+            if(maxValue > 5.0){
+                
+                ceilVal = 10.0
+                result = Float(ceilVal) * Float(multipler)
+                
+            }else{
+                
+                ceilVal = 5.0
+                result = Float(ceilVal) * Float(multipler)
+                
+            }
+            
+            print(result)
+            
+            scale = result / 10
+            
+            
+            print(scale)
+        }
+
         
-        let maxNumb = Int(maxVal) + (axisScale/2)
+        
+//        let axisScale = (Int(maxVal-minVal)/(vals.count))
+//        print(axisScale)
+//        
+//        let maxNumb = Int(maxVal) + (axisScale/2)
         
 //        if(appDelegate.loadSecondSet == true){
 //            generator = ChartAxisGeneratorMultiplier(200000)
@@ -178,7 +239,7 @@ class BarChartTestViewController: UIViewController {
 //            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: 1700000, axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
 //        }else{
             //generator = ChartAxisGeneratorMultiplier(40000)
-            generator = ChartAxisGeneratorMultiplier(Double(axisScale))
+            generator = ChartAxisGeneratorMultiplier(Double(scale))
             let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
                 return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
             }
@@ -187,7 +248,7 @@ class BarChartTestViewController: UIViewController {
             xValues = [ChartAxisValueString("", order: -1)] + chartPoints1.map{$0.x} + [ChartAxisValueString("", order: 5)]
             
 //            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: 1000000, axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
-            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: Double(maxNumb), axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
+            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: Double(result), axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
        // }
         
         
@@ -219,6 +280,7 @@ class BarChartTestViewController: UIViewController {
         let xModel = ChartAxisModel(axisValues: xValues as! [ChartAxisValue], axisTitleLabel: ChartAxisLabel(text: "PROD CLASS", settings: labelSettings))
         
         
+        
         let frame = ExamplesDefaults.chartFrame(view.bounds)
         let chartFrame = chart?.frame ?? CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight)
         
@@ -227,6 +289,7 @@ class BarChartTestViewController: UIViewController {
         
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yValues)
         let (xAxisLayer, yAxisLayer, innerFrame) = (coordsSpace.xAxisLayer, coordsSpace.yAxisLayer, coordsSpace.chartInnerFrame)
+        print(innerFrame)
         
         let chartPointsLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: chartPoints1, viewGenerator: barViewGenerator)
         
@@ -255,7 +318,7 @@ class BarChartTestViewController: UIViewController {
         let barViewSettings = ChartBarViewSettings(animDuration: 0.5)
         let barsLayer = ChartBarsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, bars: bars, horizontal: false, barWidth: Env.iPad ? 40 : 35, settings: barViewSettings)
         
-        
+        //LABEL FUNC
         let labelToBarSpace: Double = 3 // domain units
         let labelChartPoints = bars.map {bar in
             ChartPoint(x: bar.constant, y: bar.axisValue2.copy(bar.axisValue2.scalar + (bar.axisValue2.scalar > 0 ? labelToBarSpace : -labelToBarSpace)))
@@ -282,12 +345,14 @@ class BarChartTestViewController: UIViewController {
             label.movedToSuperViewHandler = {[weak label] in
                 UIView.animate(withDuration: 0.6, animations: {
                     label?.alpha = 1
-                    label?.center.y = chartPointModel.screenLoc.y
+                    label?.center.y = chartPointModel.screenLoc.y - 6
                 })
             }
             return label
             
         }, displayDelay: 0.5, mode: .translate) // show after bars animation
+        
+        
         
         return Chart(
             frame: chartFrame,
