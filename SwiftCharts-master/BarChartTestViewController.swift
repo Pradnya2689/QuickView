@@ -21,7 +21,7 @@ private struct MyItem {
         self.value = value
     }
 }
-
+ var label = UILabel()
 
 private struct MyQuantity {
     let number: Int
@@ -36,14 +36,32 @@ private struct MyQuantity {
         lazy fileprivate(set) var chartFrame: CGRect! = {
         CGRect(x: 0, y: 80, width: self.view.frame.size.width, height: self.view.frame.size.height - 80)
     }()
-    
-    override func viewDidAppear(_ animated: Bool)
-    {
         
-       
+        
+//        if (UIDevice.current.orientation.isLandscape)
+//        {
+//    
+   let label = UILabel(frame: CGRect(x: 0, y: 600, width: 180, height: 21))
+//        }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
         
     }
     func appbecomeactive(){
+        
+//        if (UIDevice.current.orientation.isPortrait)
+//        {
+//            
+//            label = UILabel(frame: CGRect(x: 0, y: 600, width: 180, height: 21))
+//        }
+//            
+//        else if (UIDevice.current.orientation.isLandscape)
+//        {
+//            label = UILabel(frame: CGRect(x: 200, y: 0, width: 180, height: 21))
+//            
+//        }
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 226.0/255.0, green: 0.0/255.0, blue: 116.0/255.0, alpha: 1.0)]
         showChart(false)
         
@@ -53,11 +71,16 @@ private struct MyQuantity {
         print(timeString)
         //label.text = String(timeString)
         
-        label.font = UIFont(name: label.font.familyName, size: 14)
+        label.font = UIFont(name: label.font.familyName, size: 10)
         // label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
-       // label.text = "Inventory Value as of 2017-03-31"
-        self.view.addSubview(label)
+          if(appDelegate.loadSecondSet == true){
+        label.text = String(timeString)
+        //label.text = "Inventory Value as of 2017-04-03"
+          }else{
+             label.text = "Inventory Value as of 2017-03-31"
+        }
+       self.view.addSubview(label)
         self.view.bringSubview(toFront: label)
     }
     
@@ -387,13 +410,27 @@ private struct MyQuantity {
     }
         
         func rotated() {
+           
             if UIDevice.current.orientation.isLandscape
             {
+                
                 self.chart?.clearView()
                 
                 let chart = barsChart(true)
                 view.addSubview(chart.view)
+                
                 self.chart = chart
+                label.frame = CGRect(x: 50, y: 215, width: 180, height: 200)
+                label.font = UIFont(name: label.font.familyName, size: 10)
+                // label.center = CGPoint(x: 160, y: 285)
+                label.textAlignment = .center
+                if(appDelegate.loadSecondSet == true){
+                   // label.text = String(timeString)
+                    //label.text = "Inventory Value as of 2017-04-03"
+                }else{
+                    label.text = "Inventory Value as of 2017-03-31"
+                }
+               
             }
             else if UIDevice.current.orientation.isPortrait
             {
@@ -402,6 +439,17 @@ private struct MyQuantity {
                 let chart = barsChart(true)
                 view.addSubview(chart.view)
                 self.chart = chart
+                label.frame =  CGRect(x: 0, y: 600, width: 180, height: 21)
+                
+                label.font = UIFont(name: label.font.familyName, size: 10)
+                // label.center = CGPoint(x: 160, y: 285)
+                label.textAlignment = .center
+                if(appDelegate.loadSecondSet == true){
+                    //label.text = String(timeString)
+                    //label.text = "Inventory Value as of 2017-04-03"
+                }else{
+                    label.text = "Inventory Value as of 2017-03-31"
+                }
                 print("Portrait")
             }
         }
