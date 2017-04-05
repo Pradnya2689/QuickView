@@ -32,12 +32,13 @@ private struct MyQuantity {
         self.text = text
     }
 }
-class BarChartTestViewController: UIViewController {
+    class BarChartTestViewController: UIViewController {
         lazy fileprivate(set) var chartFrame: CGRect! = {
         CGRect(x: 0, y: 80, width: self.view.frame.size.width, height: self.view.frame.size.height - 80)
     }()
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         
        
         
@@ -50,7 +51,7 @@ class BarChartTestViewController: UIViewController {
         label.font = UIFont(name: label.font.familyName, size: 14)
         // label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
-        label.text = "Inventory Value as of 2017-03-31"
+       // label.text = "Inventory Value as of 2017-03-31"
         self.view.addSubview(label)
         self.view.bringSubview(toFront: label)
     }
@@ -112,7 +113,7 @@ class BarChartTestViewController: UIViewController {
         }else{
             vals = [
                 ("AC", 518358),
-                ("HS", 871311),
+                ("HS", 86000),
                 ("CD", 568851),
                 ("DU", 16844),
                 ("CO", 8587)
@@ -192,8 +193,8 @@ class BarChartTestViewController: UIViewController {
         let xModel = ChartAxisModel(axisValues: xValues as! [ChartAxisValue], axisTitleLabel: ChartAxisLabel(text: "PROD CLASS", settings: labelSettings))
         
         
-        let frame = ExamplesDefaults.chartFrame(view.bounds)
-        let chartFrame = chart?.frame ?? CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight)
+        let frame = view.bounds
+        let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight+10)
         
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
         
@@ -273,6 +274,7 @@ class BarChartTestViewController: UIViewController {
     }
     
     fileprivate func showChart(_ horizontal: Bool) {
+        
         self.chart?.clearView()
         
         let chart = barsChart(horizontal)
@@ -281,6 +283,12 @@ class BarChartTestViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+//        showChart(false)
+//        if let chart = chart {
+//            let sideSelector = DirSelector(frame: CGRect(x: 0, y: chart.frame.origin.y + chart.frame.size.height, width: view.frame.size.width, height: sideSelectorHeight), controller: self)
+//            view.addSubview(sideSelector)
+//        }
+ NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(appbecomeactive),
@@ -288,7 +296,29 @@ class BarChartTestViewController: UIViewController {
             object: nil)
         
     }
+        
+        func rotated() {
+            if UIDevice.current.orientation.isLandscape
+            {
+                self.chart?.clearView()
+                
+                let chart = barsChart(true)
+                view.addSubview(chart.view)
+                self.chart = chart
+            }
+            else if UIDevice.current.orientation.isPortrait
+            {
+                self.chart?.clearView()
+                
+                let chart = barsChart(true)
+                view.addSubview(chart.view)
+                self.chart = chart
+                print("Portrait")
+            }
+        }
+
 }
+
 
 class DirSelector: UIView {
         

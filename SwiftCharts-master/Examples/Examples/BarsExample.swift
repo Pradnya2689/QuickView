@@ -346,7 +346,10 @@ class BarsExample: UIViewController {
         //            let sideSelector = DirSelector(frame: CGRect(x: 0, y: chart.frame.origin.y + chart.frame.size.height, width: view.frame.size.width, height: sideSelectorHeight), controller: self)
         //            view.addSubview(sideSelector)
         //        }
-        
+        if let chart = chart {
+            let sideSelector = DirSelector(frame: CGRect(x: 0, y: chart.frame.origin.y + chart.frame.size.height, width: view.frame.size.width, height: sideSelectorHeight), controller: self)
+            view.addSubview(sideSelector)
+        }
         let label = UILabel(frame: CGRect(x: 60, y: 70, width: 300, height: 21))
         label.font = UIFont(name: label.font.familyName, size: 14)
         // label.center = CGPoint(x: 160, y: 285)

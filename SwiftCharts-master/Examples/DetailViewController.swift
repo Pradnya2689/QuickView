@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
             configureView()
         }
     }
+    
     var currentExampleController: UIViewController?
     
     func configureView() {
