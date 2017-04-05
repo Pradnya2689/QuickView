@@ -266,6 +266,8 @@ class BarsExample: UIViewController {
         let (minVal, maxVal): (CGFloat, CGFloat) = vals.reduce((min: CGFloat(0), max: CGFloat(0))) {tuple, val in
             (min: min(tuple.min, val.val), max: max(tuple.max, val.val))
         }
+        print(minVal)
+        print(maxVal)
         let length: CGFloat = maxVal - minVal
         let zero = ChartAxisValueDouble(0)
         let bars: [ChartBarModel] = vals.enumerated().flatMap {index, tuple in

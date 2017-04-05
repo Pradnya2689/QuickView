@@ -304,7 +304,7 @@
 		062D238B1B8AAE5D0017ABB8 /* TargetExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetExample.swift; sourceTree = "<group>"; };
 		062D238C1B8AAE5D0017ABB8 /* TrackerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerExample.swift; sourceTree = "<group>"; };
 		062D238D1B8AAE5D0017ABB8 /* TrendlineExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendlineExample.swift; sourceTree = "<group>"; };
-		06342AC11B8AAD7F001C9F5D /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06342AC11B8AAD7F001C9F5D /* Quick View.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick View.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06342AC41B8AAD7F001C9F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06342AC51B8AAD7F001C9F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06342AC71B8AAD7F001C9F5D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 		C3090F9A1E8401CE0042F561 /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleViewController.swift; path = ../SampleViewController.swift; sourceTree = "<group>"; };
 		C3578DF71E85251D0035C238 /* PieChartTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieChartTestViewController.swift; path = ../PieChartTestViewController.swift; sourceTree = "<group>"; };
 		C3578DF91E8931350035C238 /* LineChartTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineChartTestViewController.swift; path = ../LineChartTestViewController.swift; sourceTree = "<group>"; };
-		C3C17F291E9236080015AB17 /* CubicLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubicLineViewController.swift; sourceTree = "<group>"; };
+		C3C17F291E9236080015AB17 /* CubicLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CubicLineViewController.swift; path = ../CubicLineViewController.swift; sourceTree = "<group>"; };
 		C3C7879E1E8BB94200AF6E18 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.otf"; path = "../MyriadPro-Bold.otf"; sourceTree = "<group>"; };
 		C3C7879F1E8BB94200AF6E18 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-It.otf"; path = "../MyriadPro-It.otf"; sourceTree = "<group>"; };
 		C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "../MyriadPro-Regular.otf"; sourceTree = "<group>"; };
@@ -560,6 +560,7 @@
 				C3090F971E83AC620042F561 /* BarChartTestViewController.swift */,
 				C3578DF71E85251D0035C238 /* PieChartTestViewController.swift */,
 				C3578DF91E8931350035C238 /* LineChartTestViewController.swift */,
+				C3C17F291E9236080015AB17 /* CubicLineViewController.swift */,
 				C3C7879E1E8BB94200AF6E18 /* MyriadPro-Bold.otf */,
 				C3C7879F1E8BB94200AF6E18 /* MyriadPro-It.otf */,
 				C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */,
@@ -583,7 +584,6 @@
 		06405D9C1B8AA74700A689FF = {
 			isa = PBXGroup;
 			children = (
-				C3C17F291E9236080015AB17 /* CubicLineViewController.swift */,
 				06405DA81B8AA74700A689FF /* SwiftCharts */,
 				06342AC21B8AAD7F001C9F5D /* Examples */,
 				06405DA71B8AA74700A689FF /* Products */,
@@ -596,7 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				06405DA61B8AA74700A689FF /* SwiftCharts.framework */,
-				06342AC11B8AAD7F001C9F5D /* Examples.app */,
+				06342AC11B8AAD7F001C9F5D /* Quick View.app */,
 				22E7020F1BF5B8EC00C19675 /* SwiftCharts.framework */,
 			);
 			name = Products;
@@ -955,7 +955,7 @@
 			);
 			name = Examples;
 			productName = Examples;
-			productReference = 06342AC11B8AAD7F001C9F5D /* Examples.app */;
+			productReference = 06342AC11B8AAD7F001C9F5D /* Quick View.app */;
 			productType = "com.apple.product-type.application";
 		};
 		06405DA51B8AA74700A689FF /* SwiftCharts */ = {
@@ -1010,8 +1010,9 @@
 				TargetAttributes = {
 					06342AC01B8AAD7F001C9F5D = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1489,18 +1490,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Examples/Examples.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Examples/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.imquickview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1513,14 +1516,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Examples/Examples.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				INFOPLIST_FILE = "Examples/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.imquickview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1545,8 +1550,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1599,8 +1604,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1640,7 +1645,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = "SwiftCharts/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schuetz.SwiftCharts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1664,7 +1669,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = "SwiftCharts/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schuetz.SwiftCharts;
 				PRODUCT_NAME = "$(TARGET_NAME)";

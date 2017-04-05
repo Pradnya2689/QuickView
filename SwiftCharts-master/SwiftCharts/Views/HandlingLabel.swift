@@ -26,6 +26,7 @@ open class HandlingLabel: UILabel {
     
     fileprivate func sharedInit() {
         isUserInteractionEnabled = true
+       
     }
     
     override open func didMoveToSuperview() {

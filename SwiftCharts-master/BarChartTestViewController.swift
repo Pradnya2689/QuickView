@@ -47,7 +47,12 @@ private struct MyQuantity {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 226.0/255.0, green: 0.0/255.0, blue: 116.0/255.0, alpha: 1.0)]
         showChart(false)
         
-        let label = UILabel(frame: CGRect(x: 60, y: 70, width: 300, height: 21))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+        print(timeString)
+        //label.text = String(timeString)
+        
         label.font = UIFont(name: label.font.familyName, size: 14)
         // label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
@@ -100,7 +105,7 @@ private struct MyQuantity {
                 ("HS", 1589544),
                 ("CD", 726289),
                 ("DU", 86640),
-                ("CO", 62482)
+                ("CO", 62482),
                 //("PP", 140)
                 
             ]
@@ -110,6 +115,7 @@ private struct MyQuantity {
             item2 = MyItem(name: "CD", quantity: quantityAverage, value: 726289)
             item3 = MyItem(name: "DU", quantity: quantityLow, value: 86640)
             item4 = MyItem(name: "CO", quantity: quantityLow, value: 62482)
+            //item5 = MyItem(name: "PP", quantity: quantityLow, value: 140)
         }else{
             vals = [
                 ("AC", 518358),
@@ -126,6 +132,7 @@ private struct MyQuantity {
             item2 = MyItem(name: "CD", quantity: quantityAverage, value: 568851)
             item3 = MyItem(name: "DU", quantity: quantityLow, value: 16844)
             item4 = MyItem(name: "CO", quantity: quantityLow, value: 8587)
+        
         }
         
         let chartPoints1: [ChartPoint] = [item0, item1, item2, item3, item4].enumerated().map {index, item in
@@ -141,28 +148,102 @@ private struct MyQuantity {
         //let labelsGenerator : ChartAxisLabel!
         var xValues : [ChartAxisValue]!
         var yValues : ChartAxisModel!
-        if(appDelegate.loadSecondSet == true){
-            generator = ChartAxisGeneratorMultiplier(200000)
-            
-            let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
-                return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
-            }
-            
-            
-            xValues = [ChartAxisValueString("", order: -1)] + chartPoints1.map{$0.x} + [ChartAxisValueString("", order: 5)]
-            
-            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: 1700000, axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
-        }else{
-            generator = ChartAxisGeneratorMultiplier(40000)
-            let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
-                return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
-            }
-            
-            
-            xValues = [ChartAxisValueString("", order: -1)] + chartPoints1.map{$0.x} + [ChartAxisValueString("", order: 5)]
-            
-            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: 1000000, axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
+        
+        let (minVal, maxVal): (CGFloat, CGFloat) = vals.reduce((min: CGFloat(0), max: CGFloat(0))) {tuple, val in
+            (min: min(tuple.min, val.val), max: max(tuple.max, val.val))
         }
+        print(minVal)
+        print(maxVal)
+        
+        var result:Float = 0.0
+        var scale :Float = 0.0
+        
+        if(maxVal <= 10){
+            
+            result = 10
+            scale = result / 10
+            
+            print(result)
+            print(scale)
+            
+        }else{
+            
+            var maxCnt = maxVal
+            var cnt = 0
+            var maxValue : CGFloat = 0.0
+            while (true){
+                
+                print(maxCnt)
+                maxCnt = maxCnt / 10
+                
+                if(maxCnt < 1){
+                    break
+                }
+                cnt += 1
+                maxValue = CGFloat(maxCnt)
+                
+            }
+            
+            print(maxValue)
+            print(cnt)
+            var ceilVal = ceilf(Float(maxValue))
+            print(ceilVal)
+            
+            var multipler = pow(10, Float(cnt)) as Float
+            
+            
+            
+            if(maxValue > 5.0){
+                
+                ceilVal = 10.0
+                result = Float(ceilVal) * Float(multipler)
+                
+            }else{
+                
+                ceilVal = 5.0
+                result = Float(ceilVal) * Float(multipler)
+                
+            }
+            
+            print(result)
+            
+            scale = result / 10
+            
+            
+            print(scale)
+        }
+
+        
+        
+//        let axisScale = (Int(maxVal-minVal)/(vals.count))
+//        print(axisScale)
+//        
+//        let maxNumb = Int(maxVal) + (axisScale/2)
+        
+//        if(appDelegate.loadSecondSet == true){
+//            generator = ChartAxisGeneratorMultiplier(200000)
+//            
+//            let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
+//                return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
+//            }
+//            
+//            
+//            xValues = [ChartAxisValueString("", order: -1)] + chartPoints1.map{$0.x} + [ChartAxisValueString("", order: 5)]
+//            
+//            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: 1700000, axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
+//        }else{
+            //generator = ChartAxisGeneratorMultiplier(40000)
+            generator = ChartAxisGeneratorMultiplier(Double(scale))
+            let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
+                return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
+            }
+            
+            
+            xValues = [ChartAxisValueString("", order: -1)] + chartPoints1.map{$0.x} + [ChartAxisValueString("", order: 5)]
+            
+//            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: 1000000, axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
+            yValues = ChartAxisModel(firstModelValue: 0, lastModelValue: Double(result), axisTitleLabels: [ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical())], axisValuesGenerator: generator, labelsGenerator: labelsGenerator)
+       // }
         
         
         
@@ -201,6 +282,7 @@ private struct MyQuantity {
         
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yValues)
         let (xAxisLayer, yAxisLayer, innerFrame) = (coordsSpace.xAxisLayer, coordsSpace.yAxisLayer, coordsSpace.chartInnerFrame)
+        print(innerFrame)
         
         let chartPointsLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: chartPoints1, viewGenerator: barViewGenerator)
         
@@ -208,9 +290,11 @@ private struct MyQuantity {
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
        
-        let (minVal, maxVal): (CGFloat, CGFloat) = vals.reduce((min: CGFloat(0), max: CGFloat(0))) {tuple, val in
-            (min: min(tuple.min, val.val), max: max(tuple.max, val.val))
-        }
+//        let (minVal, maxVal): (CGFloat, CGFloat) = vals.reduce((min: CGFloat(0), max: CGFloat(0))) {tuple, val in
+//            (min: min(tuple.min, val.val), max: max(tuple.max, val.val))
+//        }
+//        print(minVal)
+//        print(maxVal)
         let length: CGFloat = maxVal - minVal
         let zero = ChartAxisValueDouble(0)
         let bars: [ChartBarModel] = vals.enumerated().flatMap {index, tuple in
@@ -223,9 +307,12 @@ private struct MyQuantity {
             
             
         }
-        let barViewSettings = ChartBarViewSettings(animDuration: 0.5, selectionViewUpdater: ChartViewSelectorBrightness(selectedFactor: 0.5))
+//        let barViewSettings = ChartBarViewSettings(animDuration: 0.5, selectionViewUpdater: ChartViewSelectorBrightness(selectedFactor: 0.5))
+        let barViewSettings = ChartBarViewSettings(animDuration: 0.5)
         let barsLayer = ChartBarsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, bars: bars, horizontal: false, barWidth: Env.iPad ? 40 : 35, settings: barViewSettings)
-        let labelToBarSpace: Double = 50.0 // domain units
+        
+        //LABEL FUNC
+        let labelToBarSpace: Double = 3 // domain units
         let labelChartPoints = bars.map {bar in
             ChartPoint(x: bar.constant, y: bar.axisValue2.copy(bar.axisValue2.scalar + (bar.axisValue2.scalar > 0 ? labelToBarSpace : -labelToBarSpace)))
             //ChartPoint(x: bar.constant, y: bar.axisValue2)
@@ -251,12 +338,14 @@ private struct MyQuantity {
             label.movedToSuperViewHandler = {[weak label] in
                 UIView.animate(withDuration: 0.6, animations: {
                     label?.alpha = 1
-                    label?.center.y = chartPointModel.screenLoc.y-6
+                    label?.center.y = chartPointModel.screenLoc.y - 6
                 })
             }
             return label
             
         }, displayDelay: 0.5, mode: .translate) // show after bars animation
+        
+        
         
         return Chart(
             frame: chartFrame,
