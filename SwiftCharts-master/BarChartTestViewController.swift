@@ -38,7 +38,7 @@ class BarChartTestViewController: UIViewController {
     }()
     
     let label = UILabel(frame: CGRect(x: 60, y: 70, width: 300, height: 21))
-    
+    @IBOutlet var barVC:UIView!
     override func viewDidAppear(_ animated: Bool) {
         
        
@@ -96,7 +96,6 @@ class BarChartTestViewController: UIViewController {
         
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
         
-        
         let quantityVeryLow = MyQuantity(number: 100, text: "Very low")
         let quantityLow = MyQuantity(number: 250, text: "low")
         let quantityAverage = MyQuantity(number: 750, text: "Average")
@@ -112,7 +111,7 @@ class BarChartTestViewController: UIViewController {
                 ("CD", 726289),
                 ("DU", 86640),
                 ("CO", 62482)
-                //("PP", 140)
+                
                 
             ]
             
@@ -143,7 +142,7 @@ class BarChartTestViewController: UIViewController {
             let xLabelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont, rotation: 45, rotationKeep: .top)
             let x = ChartAxisValueString(item!.name, order: index, labelSettings: xLabelSettings)
             let y = ChartAxisValueString(String(item!.quantity.number), order: item!.quantity.number, labelSettings: labelSettings)
-            // let  y =  ChartAxisValueInt($0.1)
+    
             return ChartPoint(x: x, y: y)
         }
         
@@ -158,7 +157,6 @@ class BarChartTestViewController: UIViewController {
         }
         print(minVal)
         print(maxVal)
-        
         
         let axisScale = (Int(maxVal-minVal)/(vals.count))
         print(axisScale)
@@ -199,10 +197,7 @@ class BarChartTestViewController: UIViewController {
             
             let barWidth: CGFloat = (Env.iPad ? 50 : 23)
             
-            //let barWidth = layer.minXScreenSpace - minBarSpacing
-            
             let settings = ChartBarViewSettings(animDuration: 0.5)
-            
             
             let (p1, p2): (CGPoint, CGPoint) = {
                 if horizontal {
@@ -212,16 +207,16 @@ class BarChartTestViewController: UIViewController {
                 }
             }()
             
-            
             return ChartPointViewBar(p1: p1, p2: p2, width: barWidth, bgColor: nil, settings: settings)
         }
         
         let xModel = ChartAxisModel(axisValues: xValues as! [ChartAxisValue], axisTitleLabel: ChartAxisLabel(text: "PROD CLASS", settings: labelSettings))
-        
-        
         let frame = ExamplesDefaults.chartFrame(view.bounds)
         let chartFrame = chart?.frame ?? CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight)
         
+
+        
+        print("chart frame \(chartFrame)")
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
         
         
@@ -233,12 +228,7 @@ class BarChartTestViewController: UIViewController {
         let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
-       
-//        let (minVal, maxVal): (CGFloat, CGFloat) = vals.reduce((min: CGFloat(0), max: CGFloat(0))) {tuple, val in
-//            (min: min(tuple.min, val.val), max: max(tuple.max, val.val))
-//        }
-//        print(minVal)
-//        print(maxVal)
+
         let length: CGFloat = maxVal - minVal
         let zero = ChartAxisValueDouble(0)
         let bars: [ChartBarModel] = vals.enumerated().flatMap {index, tuple in
@@ -251,7 +241,6 @@ class BarChartTestViewController: UIViewController {
             
             
         }
-//        let barViewSettings = ChartBarViewSettings(animDuration: 0.5, selectionViewUpdater: ChartViewSelectorBrightness(selectedFactor: 0.5))
         let barViewSettings = ChartBarViewSettings(animDuration: 0.5)
         let barsLayer = ChartBarsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, bars: bars, horizontal: false, barWidth: Env.iPad ? 40 : 35, settings: barViewSettings)
         
@@ -282,7 +271,7 @@ class BarChartTestViewController: UIViewController {
             label.movedToSuperViewHandler = {[weak label] in
                 UIView.animate(withDuration: 0.6, animations: {
                     label?.alpha = 1
-                    label?.center.y = chartPointModel.screenLoc.y
+                    label?.center.y = chartPointModel.screenLoc.y - 5
                 })
             }
             return label
@@ -311,7 +300,23 @@ class BarChartTestViewController: UIViewController {
         view.addSubview(chart.view)
         self.chart = chart
     }
-    
+//    func devicechange(){
+//        if UIDevice.current.orientation.isLandscape {
+//            print("Landscape")
+//            
+//            print("screen height\(screenHeight)")
+//            print("view height\(view.bounds.height)")
+//           
+//            self.chart?.clearView()
+//            
+//            let chart = barsChart(false)
+//            barVC.addSubview(chart.view)
+//            self.chart = chart
+//        } else {
+//            print("Portrait")
+//        }
+//        
+//    }
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(
             self,
@@ -319,6 +324,7 @@ class BarChartTestViewController: UIViewController {
             name: .UIApplicationDidBecomeActive,
             object: nil)
         
+        //NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.devicechange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 }
 

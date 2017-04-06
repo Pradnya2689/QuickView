@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hqo-9w-ui4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hqo-9w-ui4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Examples-->
         <scene sceneID="V62-SC-1dC">
             <objects>
-                <tableViewController id="ILC-d4-PEI" customClass="MasterViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ILC-d4-PEI" customClass="MasterViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Yar-sa-v1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
         <!--Detail View Controller-->
         <scene sceneID="Xup-h1-hOT">
             <objects>
-                <viewController id="reT-BO-gof" customClass="DetailViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="reT-BO-gof" customClass="DetailViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IRc-6Z-SUo"/>
                         <viewControllerLayoutGuide type="bottom" id="95F-Yk-1iB"/>
@@ -62,7 +62,7 @@
         <!--Sample View Controller-->
         <scene sceneID="1kE-x6-VVE">
             <objects>
-                <viewController id="etF-hp-RLt" customClass="SampleViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="etF-hp-RLt" customClass="SampleViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0a3-hM-A4l"/>
                         <viewControllerLayoutGuide type="bottom" id="EPQ-en-9ND"/>
@@ -114,7 +114,7 @@
         <!--Bar Chart Test View Controller-->
         <scene sceneID="LJa-AV-VtE">
             <objects>
-                <viewController storyboardIdentifier="barChart" id="ulr-BZ-kzy" customClass="BarChartTestViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="barChart" id="ulr-BZ-kzy" customClass="BarChartTestViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eVS-jw-7JB"/>
                         <viewControllerLayoutGuide type="bottom" id="HNA-gl-TP3"/>
@@ -122,9 +122,24 @@
                     <view key="view" contentMode="scaleToFill" id="4uI-zy-MyF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnH-tE-O4I">
+                                <rect key="frame" x="0.0" y="28" width="375" height="582"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qnH-tE-O4I" firstAttribute="top" secondItem="eVS-jw-7JB" secondAttribute="bottom" constant="8" id="4Gf-vM-p35"/>
+                            <constraint firstItem="HNA-gl-TP3" firstAttribute="top" secondItem="qnH-tE-O4I" secondAttribute="bottom" constant="57" id="OEK-sv-NN6"/>
+                            <constraint firstAttribute="trailing" secondItem="qnH-tE-O4I" secondAttribute="trailing" id="gNf-Jm-kPK"/>
+                            <constraint firstItem="qnH-tE-O4I" firstAttribute="leading" secondItem="4uI-zy-MyF" secondAttribute="leading" id="rUr-0m-svf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5yh-l8-C09"/>
+                    <connections>
+                        <outlet property="barVC" destination="qnH-tE-O4I" id="MOQ-gi-f1S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gl2-14-boV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,7 +148,7 @@
         <!--Line Chart Test View Controller-->
         <scene sceneID="6dh-yM-9YH">
             <objects>
-                <viewController storyboardIdentifier="linechart" id="oGj-qB-BP4" customClass="LineChartTestViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="linechart" id="oGj-qB-BP4" customClass="LineChartTestViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mSj-5c-FOm"/>
                         <viewControllerLayoutGuide type="bottom" id="3dp-76-KaZ"/>
@@ -151,7 +166,7 @@
         <!--Cubic Line View Controller-->
         <scene sceneID="o52-Ud-yAd">
             <objects>
-                <viewController storyboardIdentifier="cubicLine" id="D7n-FJ-fLH" customClass="CubicLineViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cubicLine" id="D7n-FJ-fLH" customClass="CubicLineViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iTg-ID-iTz"/>
                         <viewControllerLayoutGuide type="bottom" id="STe-Gh-33h"/>
@@ -169,7 +184,7 @@
         <!--Pie Chart Test View Controller-->
         <scene sceneID="LBE-3r-fTN">
             <objects>
-                <viewController storyboardIdentifier="piechart" id="Daw-2L-xFu" customClass="PieChartTestViewController" customModule="Examples" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="piechart" id="Daw-2L-xFu" customClass="PieChartTestViewController" customModule="Quick_View" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ed6-wt-krH"/>
                         <viewControllerLayoutGuide type="bottom" id="tLR-JR-T2f"/>
@@ -189,7 +204,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hqo-9w-ui4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Kel-zc-LSI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kel-zc-LSI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -207,7 +222,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jrh-Ju-AeN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="q6e-hg-sd4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q6e-hg-sd4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
