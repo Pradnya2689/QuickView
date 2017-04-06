@@ -125,7 +125,7 @@ private struct MyQuantity {
         if(appDelegate.loadSecondSet == true){
             vals =  [
                 ("AC", 1012864),
-                ("HS", 1589544),
+                ("HS", 1789544),
                 ("CD", 726289),
                 ("DU", 86640),
                 ("CO", 62482),
@@ -134,7 +134,7 @@ private struct MyQuantity {
             ]
             
             item0 = MyItem(name: "AC", quantity: quantityVeryHigh, value:1012864)
-            item1 = MyItem(name: "HS", quantity: quantityHigh, value: 1589544)
+            item1 = MyItem(name: "HS", quantity: quantityHigh, value: 1789544)
             item2 = MyItem(name: "CD", quantity: quantityAverage, value: 726289)
             item3 = MyItem(name: "DU", quantity: quantityLow, value: 86640)
             item4 = MyItem(name: "CO", quantity: quantityLow, value: 62482)
@@ -177,7 +177,7 @@ private struct MyQuantity {
         let chartPoints1: [ChartPoint] = [item0, item1, item2, item3, item4].enumerated().map {index, item in
             let xLabelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont, rotation: 45, rotationKeep: .top)
             let x = ChartAxisValueString(item!.name, order: index, labelSettings: xLabelSettings)
-            let y = ChartAxisValueString(String(item!.quantity.number), order: item!.quantity.number, labelSettings: labelSettings)
+            let y = ChartAxisValueString(String(item!.value), order: item!.quantity.number, labelSettings: labelSettings)
             // let  y =  ChartAxisValueInt($0.1)
             return ChartPoint(x: x, y: y)
         }
@@ -283,7 +283,9 @@ private struct MyQuantity {
             //generator = ChartAxisGeneratorMultiplier(40000)
             generator = ChartAxisGeneratorMultiplier(Double(scale))
             let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
-                return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
+                
+                //var val = Int(scalar)
+                return ChartAxisLabel(text: "\(Int(scalar))", settings: labelSettings)
             }
             
             
@@ -301,8 +303,6 @@ private struct MyQuantity {
             let minBarSpacing: CGFloat = ExamplesDefaults.minBarSpacing + 16
             
             let barWidth: CGFloat = (Env.iPad ? 50 : 23)
-            
-            //let barWidth = layer.minXScreenSpace - minBarSpacing
             
             let settings = ChartBarViewSettings(animDuration: 0.5)
             
@@ -323,7 +323,7 @@ private struct MyQuantity {
         
         
         let frame = view.bounds
-        let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight+10)
+        let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y+60, width: frame.size.width, height: frame.size.height - sideSelectorHeight-60)
         
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
         
@@ -337,12 +337,7 @@ private struct MyQuantity {
         let settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.black, linesWidth: ExamplesDefaults.guidelinesWidth)
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, settings: settings)
         
-       
-//        let (minVal, maxVal): (CGFloat, CGFloat) = vals.reduce((min: CGFloat(0), max: CGFloat(0))) {tuple, val in
-//            (min: min(tuple.min, val.val), max: max(tuple.max, val.val))
-//        }
-//        print(minVal)
-//        print(maxVal)
+
         let length: CGFloat = maxVal - minVal
         let zero = ChartAxisValueDouble(0)
         let bars: [ChartBarModel] = vals.enumerated().flatMap {index, tuple in
@@ -355,7 +350,7 @@ private struct MyQuantity {
             
             
         }
-//        let barViewSettings = ChartBarViewSettings(animDuration: 0.5, selectionViewUpdater: ChartViewSelectorBrightness(selectedFactor: 0.5))
+
         let barViewSettings = ChartBarViewSettings(animDuration: 0.5)
         let barsLayer = ChartBarsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, bars: bars, horizontal: false, barWidth: Env.iPad ? 40 : 35, settings: barViewSettings)
         
@@ -420,64 +415,71 @@ private struct MyQuantity {
     }
     
     override func viewDidLoad() {
-//        showChart(false)
-//        if let chart = chart {
-//            let sideSelector = DirSelector(frame: CGRect(x: 0, y: chart.frame.origin.y + chart.frame.size.height, width: view.frame.size.width, height: sideSelectorHeight), controller: self)
-//            view.addSubview(sideSelector)
-//        }
- NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+
+ //NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(appbecomeactive),
-            name: .UIApplicationDidBecomeActive,
+            //name: .UIApplicationDidBecomeActive,
+            name: .UIApplicationWillEnterForeground,
             object: nil)
         
     }
         
         func rotated() {
            
-            if UIDevice.current.orientation.isLandscape
-            {
-                
-                self.chart?.clearView()
-                
-                let chart = barsChart(true)
-                view.addSubview(chart.view)
-                
-                self.chart = chart
-                label.frame = CGRect(x: 50, y: 215, width: 180, height: 200)
-                label.font = UIFont(name: label.font.familyName, size: 10)
-                // label.center = CGPoint(x: 160, y: 285)
-                label.textAlignment = .center
-                if(appDelegate.loadSecondSet == true){
-                   // label.text = String(timeString)
-                    //label.text = "Inventory Value as of 2017-04-03"
-                }else{
-                    label.text = "Inventory Value as of 2017-03-31"
-                }
-               
-            }
-            else if UIDevice.current.orientation.isPortrait
-            {
-                self.chart?.clearView()
-                
-                let chart = barsChart(true)
-                view.addSubview(chart.view)
-                self.chart = chart
-                label.frame =  CGRect(x: 0, y: 600, width: 180, height: 21)
-                
-                label.font = UIFont(name: label.font.familyName, size: 10)
-                // label.center = CGPoint(x: 160, y: 285)
-                label.textAlignment = .center
-                if(appDelegate.loadSecondSet == true){
-                    //label.text = String(timeString)
-                    //label.text = "Inventory Value as of 2017-04-03"
-                }else{
-                    label.text = "Inventory Value as of 2017-03-31"
-                }
-                print("Portrait")
-            }
-        }
+//            if UIDevice.current.orientation.isLandscape
+//            {
+//                
+//                self.chart?.clearView()
+//                
+//                let chart = barsChart(true)
+//                view.addSubview(chart.view)
+//                
+//                self.chart = chart
+//                label.frame = CGRect(x: 50, y: 215, width: 180, height: 200)
+//                label.font = UIFont(name: label.font.familyName, size: 10)
+//                // label.center = CGPoint(x: 160, y: 285)
+//                label.textAlignment = .center
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd"
+//                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+//                print(timeString)
+//                //label.text = Str
+//                if(appDelegate.loadSecondSet == true){
+//                    label.text = String(timeString)
+//                    //label.text = "Inventory Value as of 2017-04-03"
+//                }else{
+//                    label.text = "Inventory Value as of 2017-03-31"
+//                }
+//               
+//            }
+//            else if UIDevice.current.orientation.isPortrait
+//            {
+//                self.chart?.clearView()
+//                
+//                let chart = barsChart(true)
+//                view.addSubview(chart.view)
+//                self.chart = chart
+//                label.frame =  CGRect(x: 0, y: 600, width: 180, height: 21)
+//                
+//                label.font = UIFont(name: label.font.familyName, size: 10)
+//                // label.center = CGPoint(x: 160, y: 285)
+//                label.textAlignment = .center
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd"
+//                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+//                print(timeString)
+//                //label.text = Str
+//                if(appDelegate.loadSecondSet == true){
+//                    label.text = String(timeString)
+//                    //label.text = "Inventory Value as of 2017-04-03"
+//                }else{
+//                    label.text = "Inventory Value as of 2017-03-31"
+//                }
+//                print("Portrait")
+//            }
+//        }
 
 }
 
@@ -563,3 +565,4 @@ class DirSelector: UIView {
     */
 
 
+}

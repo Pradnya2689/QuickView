@@ -183,7 +183,6 @@
 		43649A691C7AC7E300523D7F /* ChartPointsTouchHighlightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43649A681C7AC7E300523D7F /* ChartPointsTouchHighlightLayer.swift */; };
 		437C78521D1EF923003C19C3 /* MultiTrackerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437C78511D1EF923003C19C3 /* MultiTrackerExample.swift */; };
 		4C87221B1E8D27FF004ECD7C /* PieCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C87221A1E8D27FF004ECD7C /* PieCharts.framework */; };
-		4C87221D1E8D46BD004ECD7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C87221C1E8D46BD004ECD7C /* GoogleService-Info.plist */; };
 		6A3A67C41E57318A00B5354F /* RangedAxisExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3A67C31E57318A00B5354F /* RangedAxisExample.swift */; };
 		6A3A67C61E576A6000B5354F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3A67C51E576A6000B5354F /* UIColor.swift */; };
 		C3090F991E83B16B0042F561 /* BarChartTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3090F971E83AC620042F561 /* BarChartTestViewController.swift */; };
@@ -196,6 +195,7 @@
 		C3C787A31E8BBA0400AF6E18 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */; };
 		CA6EE45F71DDB86BD3F60D67 /* Pods_SwiftCharts_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39860938A0DBCA142A59F8C1 /* Pods_SwiftCharts_tvOS.framework */; };
 		CBFF99D88F684E040226E665 /* Pods_Examples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45614FAF19FDFF49939A4BA8 /* Pods_Examples.framework */; };
+		D98627901E951A6300085526 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D986278F1E951A6300085526 /* GoogleService-Info.plist */; };
 		EB08E2331B93A15E0030081C /* ChartAxisValueDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB08E2321B93A15E0030081C /* ChartAxisValueDouble.swift */; };
 		EB093E5F1D2141EF001157BD /* ChartAxisValuesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB093E5E1D2141EF001157BD /* ChartAxisValuesGenerator.swift */; };
 		EB093E611D21421D001157BD /* ChartAxisValuesGeneratorFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB093E601D21421D001157BD /* ChartAxisValuesGeneratorFixed.swift */; };
@@ -388,7 +388,6 @@
 		437C78511D1EF923003C19C3 /* MultiTrackerExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiTrackerExample.swift; sourceTree = "<group>"; };
 		45614FAF19FDFF49939A4BA8 /* Pods_Examples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Examples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C87221A1E8D27FF004ECD7C /* PieCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PieCharts.framework; path = "../../../Library/Developer/Xcode/DerivedData/SwiftCharts-cefyrfjjdvfokpecjxfvpgftyven/Build/Products/Debug-iphonesimulator/PieCharts/PieCharts.framework"; sourceTree = "<group>"; };
-		4C87221C1E8D46BD004ECD7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C87221E1E8D4857004ECD7C /* Examples.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Examples.entitlements; sourceTree = "<group>"; };
 		580AFD3B1DC2396B007AF8E6 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		61E6E419BFAE07E54911B9E7 /* Pods-Examples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Examples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Examples/Pods-Examples.release.xcconfig"; sourceTree = "<group>"; };
@@ -406,6 +405,7 @@
 		C3C787A01E8BB94200AF6E18 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.otf"; path = "../MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		C8167F32B9F102AF5D461188 /* Pods_SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED4ED5E3C2A0A3AFA2C1CE7 /* Pods-SwiftCharts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts/Pods-SwiftCharts.release.xcconfig"; sourceTree = "<group>"; };
+		D986278F1E951A6300085526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB5E305E5517DD21B68FB021 /* Pods-SwiftCharts tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftCharts tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftCharts tvOS/Pods-SwiftCharts tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		EB08E2321B93A15E0030081C /* ChartAxisValueDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAxisValueDouble.swift; sourceTree = "<group>"; };
 		EB093E5E1D2141EF001157BD /* ChartAxisValuesGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartAxisValuesGenerator.swift; sourceTree = "<group>"; };
@@ -551,8 +551,8 @@
 		06342AC21B8AAD7F001C9F5D /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				D986278F1E951A6300085526 /* GoogleService-Info.plist */,
 				4C87221E1E8D4857004ECD7C /* Examples.entitlements */,
-				4C87221C1E8D46BD004ECD7C /* GoogleService-Info.plist */,
 				06342AC51B8AAD7F001C9F5D /* AppDelegate.swift */,
 				06342AC71B8AAD7F001C9F5D /* MasterViewController.swift */,
 				06342AC91B8AAD7F001C9F5D /* DetailViewController.swift */,
@@ -1010,7 +1010,7 @@
 				TargetAttributes = {
 					06342AC01B8AAD7F001C9F5D = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1024,12 +1024,12 @@
 					};
 					06405DA51B8AA74700A689FF = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 						LastSwiftMigration = 0800;
 					};
 					22E7020E1BF5B8EC00C19675 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = A8U8Q2EEBA;
+						DevelopmentTeam = L9Q4J2MT8T;
 					};
 				};
 			};
@@ -1059,7 +1059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C787A11E8BBA0400AF6E18 /* MyriadPro-Bold.otf in Resources */,
-				4C87221D1E8D46BD004ECD7C /* GoogleService-Info.plist in Resources */,
+				D98627901E951A6300085526 /* GoogleService-Info.plist in Resources */,
 				C3C787A21E8BBA0400AF6E18 /* MyriadPro-It.otf in Resources */,
 				C3C787A31E8BBA0400AF6E18 /* MyriadPro-Regular.otf in Resources */,
 				067510BF1B8AB36500A37F64 /* Main_iPhone.storyboard in Resources */,
@@ -1492,7 +1492,7 @@
 				CODE_SIGN_ENTITLEMENTS = Examples/Examples.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1500,7 +1500,7 @@
 				INFOPLIST_FILE = "Examples/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.imquickview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.quickviewDemo;
 				PRODUCT_MODULE_NAME = Example;
 				PRODUCT_NAME = "Quick View";
 				PROVISIONING_PROFILE = "";
@@ -1519,11 +1519,11 @@
 				CODE_SIGN_ENTITLEMENTS = Examples/Examples.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				INFOPLIST_FILE = "Examples/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.imquickview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ingrammicro.quickviewDemo;
 				PRODUCT_MODULE_NAME = Example;
 				PRODUCT_NAME = "Quick View";
 				PROVISIONING_PROFILE = "";
@@ -1557,7 +1557,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1611,7 +1611,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = A8U8Q2EEBA;
+				DEVELOPMENT_TEAM = L9Q4J2MT8T;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
