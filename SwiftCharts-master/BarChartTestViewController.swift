@@ -44,6 +44,8 @@ private struct MyQuantity {
    let label = UILabel(frame: CGRect(x: 0, y: screenHeight-80 , width: 180, height: 21))
 //        }
     
+    let label = UILabel(frame: CGRect(x: 60, y: 70, width: 300, height: 21))
+    @IBOutlet var barVC:UIView!
     override func viewDidAppear(_ animated: Bool) {
         
         
@@ -113,7 +115,6 @@ private struct MyQuantity {
         
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
         
-        
         let quantityVeryLow = MyQuantity(number: 100, text: "Very low")
         let quantityLow = MyQuantity(number: 250, text: "low")
         let quantityAverage = MyQuantity(number: 750, text: "Average")
@@ -128,8 +129,8 @@ private struct MyQuantity {
                 ("HS", 1789544),
                 ("CD", 726289),
                 ("DU", 86640),
-                ("CO", 62482),
-                //("PP", 140)
+                ("CO", 62482)
+                
                 
             ]
             
@@ -177,8 +178,8 @@ private struct MyQuantity {
         let chartPoints1: [ChartPoint] = [item0, item1, item2, item3, item4].enumerated().map {index, item in
             let xLabelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont, rotation: 45, rotationKeep: .top)
             let x = ChartAxisValueString(item!.name, order: index, labelSettings: xLabelSettings)
-            let y = ChartAxisValueString(String(item!.value), order: item!.quantity.number, labelSettings: labelSettings)
-            // let  y =  ChartAxisValueInt($0.1)
+            let y = ChartAxisValueString(String(item!.quantity.number), order: item!.quantity.number, labelSettings: labelSettings)
+    
             return ChartPoint(x: x, y: y)
         }
         
@@ -194,27 +195,8 @@ private struct MyQuantity {
         print(minVal)
         print(maxVal)
         
-        var result:Float = 0.0
-        var scale :Float = 0.0
-        
-        if(maxVal <= 10){
-            
-            result = 10
-            scale = 1
-            
-            print(result)
-            print(scale)
-            
-        }else if(maxVal <= 1){
-            
-            result = 1
-            scale = 0.1
-            
-            print(result)
-            print(scale)
-            
-        }
-        else{
+        let axisScale = (Int(maxVal-minVal)/(vals.count))
+        print(axisScale)
         
             var maxCnt = maxVal
             var cnt = 0
@@ -306,7 +288,6 @@ private struct MyQuantity {
             
             let settings = ChartBarViewSettings(animDuration: 0.5)
             
-            
             let (p1, p2): (CGPoint, CGPoint) = {
                 if horizontal {
                     return (CGPoint(x: bottomLeft.x, y: chartPointModel.screenLoc.y), CGPoint(x: chartPointModel.screenLoc.x, y: chartPointModel.screenLoc.y))
@@ -315,16 +296,16 @@ private struct MyQuantity {
                 }
             }()
             
-            
             return ChartPointViewBar(p1: p1, p2: p2, width: barWidth, bgColor: nil, settings: settings)
         }
         
         let xModel = ChartAxisModel(axisValues: xValues as! [ChartAxisValue], axisTitleLabel: ChartAxisLabel(text: "PROD CLASS", settings: labelSettings))
+        let frame = ExamplesDefaults.chartFrame(view.bounds)
+        let chartFrame = chart?.frame ?? CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight)
         
+
         
-        let frame = view.bounds
-        let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y+60, width: frame.size.width, height: frame.size.height - sideSelectorHeight-60)
-        
+        print("chart frame \(chartFrame)")
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
         
         
@@ -350,7 +331,6 @@ private struct MyQuantity {
             
             
         }
-
         let barViewSettings = ChartBarViewSettings(animDuration: 0.5)
         let barsLayer = ChartBarsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, bars: bars, horizontal: false, barWidth: Env.iPad ? 40 : 35, settings: barViewSettings)
         
@@ -381,7 +361,7 @@ private struct MyQuantity {
             label.movedToSuperViewHandler = {[weak label] in
                 UIView.animate(withDuration: 0.6, animations: {
                     label?.alpha = 1
-                    label?.center.y = chartPointModel.screenLoc.y - 6
+                    label?.center.y = chartPointModel.screenLoc.y - 5
                 })
             }
             return label
@@ -413,7 +393,23 @@ private struct MyQuantity {
         view.addSubview(chart.view)
         self.chart = chart
     }
-    
+//    func devicechange(){
+//        if UIDevice.current.orientation.isLandscape {
+//            print("Landscape")
+//            
+//            print("screen height\(screenHeight)")
+//            print("view height\(view.bounds.height)")
+//           
+//            self.chart?.clearView()
+//            
+//            let chart = barsChart(false)
+//            barVC.addSubview(chart.view)
+//            self.chart = chart
+//        } else {
+//            print("Portrait")
+//        }
+//        
+//    }
     override func viewDidLoad() {
  NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -424,6 +420,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestVie
             name: .UIApplicationWillEnterForeground,
             object: nil)
         
+        //NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.devicechange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
         
         func rotated()
