@@ -41,7 +41,7 @@ private struct MyQuantity {
 //        if (UIDevice.current.orientation.isLandscape)
 //        {
 //    
-   let label = UILabel(frame: CGRect(x: 0, y: 600, width: 180, height: 21))
+   let label = UILabel(frame: CGRect(x: 0, y: screenHeight-80 , width: 180, height: 21))
 //        }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -415,8 +415,8 @@ private struct MyQuantity {
     }
     
     override func viewDidLoad() {
-
- //NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+ NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(appbecomeactive),
@@ -426,60 +426,61 @@ private struct MyQuantity {
         
     }
         
-        func rotated() {
+        func rotated()
+        {
            
-//            if UIDevice.current.orientation.isLandscape
-//            {
-//                
-//                self.chart?.clearView()
-//                
-//                let chart = barsChart(true)
-//                view.addSubview(chart.view)
-//                
-//                self.chart = chart
-//                label.frame = CGRect(x: 50, y: 215, width: 180, height: 200)
-//                label.font = UIFont(name: label.font.familyName, size: 10)
-//                // label.center = CGPoint(x: 160, y: 285)
-//                label.textAlignment = .center
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyy-MM-dd"
-//                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
-//                print(timeString)
-//                //label.text = Str
-//                if(appDelegate.loadSecondSet == true){
-//                    label.text = String(timeString)
-//                    //label.text = "Inventory Value as of 2017-04-03"
-//                }else{
-//                    label.text = "Inventory Value as of 2017-03-31"
-//                }
-//               
-//            }
-//            else if UIDevice.current.orientation.isPortrait
-//            {
-//                self.chart?.clearView()
-//                
-//                let chart = barsChart(true)
-//                view.addSubview(chart.view)
-//                self.chart = chart
-//                label.frame =  CGRect(x: 0, y: 600, width: 180, height: 21)
-//                
-//                label.font = UIFont(name: label.font.familyName, size: 10)
-//                // label.center = CGPoint(x: 160, y: 285)
-//                label.textAlignment = .center
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyy-MM-dd"
-//                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
-//                print(timeString)
-//                //label.text = Str
-//                if(appDelegate.loadSecondSet == true){
-//                    label.text = String(timeString)
-//                    //label.text = "Inventory Value as of 2017-04-03"
-//                }else{
-//                    label.text = "Inventory Value as of 2017-03-31"
-//                }
-//                print("Portrait")
-//            }
-//        }
+            if UIDevice.current.orientation.isLandscape
+            {
+                
+                self.chart?.clearView()
+                
+                let chart = barsChart(true)
+                view.addSubview(chart.view)
+                
+                self.chart = chart
+                label.frame = CGRect(x: 50, y: screenWidth-70, width: 180, height: 21)
+                label.font = UIFont(name: label.font.familyName, size: 10)
+                // label.center = CGPoint(x: 160, y: 285)
+                label.textAlignment = .center
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+                print(timeString)
+                //label.text = Str
+                if(appDelegate.loadSecondSet == true){
+                    label.text = String(timeString)
+                    //label.text = "Inventory Value as of 2017-04-03"
+                }else{
+                    label.text = "Inventory Value as of 2017-03-31"
+                }
+               
+            }
+            else if UIDevice.current.orientation.isPortrait
+            {
+                self.chart?.clearView()
+                
+                let chart = barsChart(true)
+                view.addSubview(chart.view)
+                self.chart = chart
+                label.frame =  CGRect(x: 0, y: screenHeight-80, width: 180, height: 21)
+                
+                label.font = UIFont(name: label.font.familyName, size: 10)
+                // label.center = CGPoint(x: 160, y: 285)
+                label.textAlignment = .center
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+                print(timeString)
+                //label.text = Str
+                if(appDelegate.loadSecondSet == true){
+                    label.text = String(timeString)
+                    //label.text = "Inventory Value as of 2017-04-03"
+                }else{
+                    label.text = "Inventory Value as of 2017-03-31"
+                }
+                print("Portrait")
+            }
+      //  }
 
 }
 

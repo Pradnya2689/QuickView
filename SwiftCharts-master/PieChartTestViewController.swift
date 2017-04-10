@@ -27,6 +27,8 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 //        NotificationCenter.default.addObserver(
 //            self,
 //            selector: #selector(appbecmat),
@@ -35,10 +37,130 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
         
         
     }
+    
+    func rotated()
+    {
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
+            var mainLegendView = UIView()
+            chartView.removeFromSuperview()
+            mainLegendView.removeFromSuperview()
+            mainLegendView = UIView()
+            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
+            self.view.addSubview(chartView)
+            chartView.outerRadius = 100
+            chartView.innerRadius = 0
+            // mainLegendView.backgroundColor = UIColor.red
+            
+            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
+            self.view.addSubview(mainLegendView)
+            setLegend1()
+            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+            chartView.delegate = self
+            chartView.models = createModels()
+            
+        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            var mainLegendView = UIView()
+            chartView.removeFromSuperview()
+            mainLegendView.removeFromSuperview()
+            mainLegendView = UIView()
+            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
+            self.view.addSubview(chartView)
+            chartView.outerRadius = 100
+            chartView.innerRadius = 0
+            // mainLegendView.backgroundColor = UIColor.red
+            
+            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
+            self.view.addSubview(mainLegendView)
+            setLegend1()
+            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+            chartView.delegate = self
+            chartView.models = createModels()
+            
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            chartView.removeFromSuperview()
+            mainLegendView.removeFromSuperview()
+            mainLegendView = UIView()
+            chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
+            self.view.addSubview(chartView)
+            chartView.outerRadius = 150
+            chartView.innerRadius = 0
+            mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
+            self.view.addSubview(mainLegendView)
+            setLegend()
+            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+            chartView.delegate = self
+            chartView.models = createModels()
+            
+        }
+        else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
+        {
+            
+        }
+                /*    if UIDevice.current.orientation.isLandscape
+                    {
+                       
+        //
+        //                self.chart?.clearView()
+        //
+        //                let chart = barsChart(true)
+        //                view.addSubview(chart.view)
+        //
+        //                self.chart = chart
+        //                label.frame = CGRect(x: 50, y: 215, width: 180, height: 200)
+        //                label.font = UIFont(name: label.font.familyName, size: 10)
+        //                // label.center = CGPoint(x: 160, y: 285)
+        //                label.textAlignment = .center
+        //                let dateFormatter = DateFormatter()
+        //                dateFormatter.dateFormat = "yyyy-MM-dd"
+        //                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+        //                print(timeString)
+        //                //label.text = Str
+        //                if(appDelegate.loadSecondSet == true){
+        //                    label.text = String(timeString)
+        //                    //label.text = "Inventory Value as of 2017-04-03"
+        //                }else{
+        //                    label.text = "Inventory Value as of 2017-03-31"
+        //                }
+        //
+                   }
+                    else if UIDevice.current.orientation.isPortrait
+                    {
+                        
+                        
+
+        //                self.chart?.clearView()
+        //
+        //                let chart = barsChart(true)
+        //                view.addSubview(chart.view)
+        //                self.chart = chart
+        //                label.frame =  CGRect(x: 0, y: 600, width: 180, height: 21)
+        //
+        //                label.font = UIFont(name: label.font.familyName, size: 10)
+        //                // label.center = CGPoint(x: 160, y: 285)
+        //                label.textAlignment = .center
+        //                let dateFormatter = DateFormatter()
+        //                dateFormatter.dateFormat = "yyyy-MM-dd"
+        //                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+        //                print(timeString)
+        //                //label.text = Str
+        //                if(appDelegate.loadSecondSet == true){
+        //                    label.text = String(timeString)
+        //                    //label.text = "Inventory Value as of 2017-04-03"
+        //                }else{
+        //                    label.text = "Inventory Value as of 2017-03-31"
+        //                }
+        //                print("Portrait")
+        //            }
+              }*/
+        
+    }
+
     func appbecmat(){
         
     }
     override func viewWillAppear(_ animated: Bool) {
+                NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PieChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
         self.navigationItem.title = "Quick View"
         self.tabBarItem.title = "LOB VOLUME"
@@ -49,23 +171,82 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        chartView.removeFromSuperview()
-        mainLegendView.removeFromSuperview()
-        mainLegendView = UIView()
-          chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
-        self.view.addSubview(chartView)
-        chartView.outerRadius = 150
-        chartView.innerRadius = 0
-        mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
-        self.view.addSubview(mainLegendView)
-        setLegend()
-        chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-        chartView.delegate = self
-        chartView.models = createModels()
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
+            var mainLegendView = UIView()
+            chartView.removeFromSuperview()
+            mainLegendView.removeFromSuperview()
+            mainLegendView = UIView()
+            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
+            self.view.addSubview(chartView)
+            chartView.outerRadius = 100
+            chartView.innerRadius = 0
+            // mainLegendView.backgroundColor = UIColor.red
+            
+            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
+            self.view.addSubview(mainLegendView)
+            setLegend1()
+            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+            chartView.delegate = self
+            chartView.models = createModels()
+            
+        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            var mainLegendView = UIView()
+            chartView.removeFromSuperview()
+            mainLegendView.removeFromSuperview()
+            mainLegendView = UIView()
+            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
+            self.view.addSubview(chartView)
+            chartView.outerRadius = 100
+            chartView.innerRadius = 0
+            // mainLegendView.backgroundColor = UIColor.red
+            
+            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
+            self.view.addSubview(mainLegendView)
+            setLegend1()
+            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+            chartView.delegate = self
+            chartView.models = createModels()
+            
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            chartView.removeFromSuperview()
+            mainLegendView.removeFromSuperview()
+            mainLegendView = UIView()
+            chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
+            self.view.addSubview(chartView)
+            chartView.outerRadius = 150
+            chartView.innerRadius = 0
+            mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
+            self.view.addSubview(mainLegendView)
+            setLegend()
+            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+            chartView.delegate = self
+            chartView.models = createModels()
+            
+        }
+        else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
+        {
+            
+        }
+
+//        chartView.removeFromSuperview()
+//        mainLegendView.removeFromSuperview()
+//        mainLegendView = UIView()
+//          chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
+//        self.view.addSubview(chartView)
+//        chartView.outerRadius = 150
+//        chartView.innerRadius = 0
+//        mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
+//        self.view.addSubview(mainLegendView)
+//        setLegend()
+//        chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+//        chartView.delegate = self
+//        chartView.models = createModels()
     }
    
     
-    func onSelected(slice: PieSlice, selected: Bool) {
+    func onSelected(slice: PieSlice, selected: Bool)
+    {
+        
         print("Selected: \(selected), slice: \(slice)")
         var count = slice.data.id
         var count1 = count + 10
@@ -96,7 +277,8 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
     fileprivate func createModels() -> [PieSliceModel] {
         let alpha: CGFloat = 0.5
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if(appDelegate.loadSecondSet == true){
+        if(appDelegate.loadSecondSet == true)
+        {
         return [
             PieSliceModel(value: 298012, color: UIColor(red: 255.0/255.0, green: 214.0/255.0, blue: 0.0/255.0, alpha: 1.0)),
             PieSliceModel(value: 182430, color: UIColor(red: 77.0/255.0, green: 208.0/255.0, blue: 255.0/255.0, alpha: 1.0)),
@@ -104,7 +286,9 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
             PieSliceModel(value: 135301, color: UIColor(red: 149.0/255.0, green: 117.0/255.0, blue: 205.0/255.0, alpha: 1.0)),
             PieSliceModel(value: 1246637, color: UIColor(red: 229.0/255.0, green: 57.0/255.0, blue: 53.0/255.0, alpha: 1.0)),
         ]
-        }else{
+        }
+        else
+        {
             return [
                 PieSliceModel(value: 65887, color: UIColor(red: 255.0/255.0, green: 214.0/255.0, blue: 0.0/255.0, alpha: 1.0)),
                 PieSliceModel(value: 87910, color: UIColor(red: 77.0/255.0, green: 208.0/255.0, blue: 255.0/255.0, alpha: 1.0)),
@@ -114,9 +298,69 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
             ]
         }
     }
-    
-    func setLegend(){
+    func setLegend1()
+    {
+        self.mainLegendView.removeFromSuperview()
+          mainLegendView = UIView()
+        mainLegendView.frame = CGRect(x: 400, y: 80, width: screenWidth, height: 10)
+        self.view.addSubview(mainLegendView)
+        let alpha: CGFloat = 0.5
+        var getMainViewHeight = 10.0 as! CGFloat
+        var getMainViewY = screenHeight-220
+        var tag = 1
+        var tag1 = 10
+        for i in 0 ..< labelArray.count
+        {
+            let label = UILabel(frame: CGRect(x: 35, y: getMainViewHeight, width: 70, height: 20))
+            label.textAlignment = NSTextAlignment.left
+            label.font = UIFont(name: "MyriadPro-Regular", size: 13)
+            label.text = "\(self.labelArray[i])"
+            label.tag = tag
+            tag += 1
+            
+            let  imgLabel = UILabel(frame: CGRect(x: 8, y: getMainViewHeight+3, width: 13, height: 13))
+            imgLabel.backgroundColor = self.colorArray[i]
+            
+            let valuelabel = UILabel(frame: CGRect(x: 120, y: getMainViewHeight, width: 200, height: 20))
+            valuelabel.textAlignment = NSTextAlignment.left
+            valuelabel.font = UIFont(name: "MyriadPro-Regular", size: 13)
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            
+            
+            if(appDelegate.loadSecondSet == true)
+            {
+                valuelabel.text = "\(self.valueArray[i])"
+            }
+            else if(appDelegate.loadSecondSet == false)
+            {
+                valuelabel.text = "\(self.valueArray1[i])"
+            }
+            
+            
+            valuelabel.tag = tag1
+            tag1 += 1
+            //valuelabel.text = "\(self.valueArray[i])"
+            
+            self.mainLegendView.addSubview(imgLabel)
+            self.mainLegendView.addSubview(label)
+            self.mainLegendView.addSubview(valuelabel)
+            getMainViewHeight = getMainViewHeight + 30.0
+        }
         
+        
+        mainLegendView.translatesAutoresizingMaskIntoConstraints = true
+        // mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: getMainViewHeight)
+        mainLegendView.frame =  CGRect(x: 400, y: 70 , width: screenWidth, height: 200)
+        
+    }
+    func setLegend()
+    {
+        self.mainLegendView.removeFromSuperview()
+        mainLegendView = UIView()
+        mainLegendView.frame = CGRect(x: 400, y: 80, width: screenWidth, height: 10)
+        self.view.addSubview(mainLegendView)
          let alpha: CGFloat = 0.5
         var getMainViewHeight = 10.0 as! CGFloat
         var getMainViewY = screenHeight-220
@@ -139,11 +383,19 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
             valuelabel.font = UIFont(name: "MyriadPro-Regular", size: 13)
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            if(appDelegate.loadSecondSet == true){
+            
+            
+            
+            if(appDelegate.loadSecondSet == true)
+            {
                 valuelabel.text = "\(self.valueArray[i])"
-            }else if(appDelegate.loadSecondSet == false){
+            }
+            else if(appDelegate.loadSecondSet == false)
+            {
                valuelabel.text = "\(self.valueArray1[i])"
             }
+            
+            
             valuelabel.tag = tag1
             tag1 += 1
             //valuelabel.text = "\(self.valueArray[i])"
@@ -156,14 +408,15 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
        
         
         mainLegendView.translatesAutoresizingMaskIntoConstraints = true
-        mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: getMainViewHeight)
-        
+      mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: getMainViewHeight)
+      // mainLegendView.frame =  CGRect(x: 400, y: 70 , width: screenWidth, height: 200)
     
     }
     
     // MARK: - Layers
     
-    fileprivate func createCustomViewsLayer() -> PieCustomViewsLayer {
+    fileprivate func createCustomViewsLayer() -> PieCustomViewsLayer
+    {
         let viewLayer = PieCustomViewsLayer()
         
         let settings = PieCustomViewsLayerSettings()

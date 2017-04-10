@@ -139,7 +139,28 @@ class CubicLineViewController: UIViewController {
             self.loadSetTwo()
         }
     }
-    
+    func rotated()
+    {
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft
+        {
+            self.loadappdata()
+            
+        }
+        else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight
+        {
+              self.loadappdata()
+            
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+              self.loadappdata()
+            
+        }
+        else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
+        {
+           //  self.loadappdata()
+        }
+               
+    }
+
     func loadSetOne(){
         let sideSelectorHeight: CGFloat = 50
         
@@ -160,7 +181,7 @@ class CubicLineViewController: UIViewController {
                 let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "Volume", settings: labelSettings.defaultVertical()))
                 //let chartFrame = ExamplesDefaults.chartFrame(view.bounds)
         
-                let frame = ExamplesDefaults.chartFrame(view.bounds)
+                let frame = view.bounds
                 let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight)
         
                 let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
@@ -372,6 +393,9 @@ class CubicLineViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CubicLineViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         self.navigationItem.title = "Quick View"
         self.tabBarItem.title = "OVERALL TREND"
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 226.0/255.0, green: 0.0/255.0, blue: 116.0/255.0, alpha: 1.0)]
