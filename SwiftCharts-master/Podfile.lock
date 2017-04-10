@@ -28,7 +28,7 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - PieCharts (0.0.5)
-  - Protobuf (3.2.0)
+  - Protobuf (3.2.1)
 
 DEPENDENCIES:
   - Firebase/Core
@@ -45,8 +45,8 @@ SPEC CHECKSUMS:
   FirebaseMessaging: df8267f378580a24174ce7861233aa11d5c90109
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   PieCharts: a0fb4784a3460088c8ba7dfb00b89784ddaa7e70
-  Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  Protobuf: 2ccbaf193f6c65adc67745453ca0c13234c32796
 
 PODFILE CHECKSUM: 7f3fc2a74026433d75f6d2bbf2d4a256c7d65fc2
 
-COCOAPODS: 1.1.0
+COCOAPODS: 1.0.1
