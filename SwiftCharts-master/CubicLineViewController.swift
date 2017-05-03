@@ -12,9 +12,9 @@ import SwiftCharts
 class CubicLineViewController: UIViewController {
     
     fileprivate var chart: Chart? // arc
-
+var orintation : UIDeviceOrientation!  = UIDevice.current.orientation
     let sideSelectorHeight: CGFloat = 50
-    
+    var count = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -141,26 +141,37 @@ class CubicLineViewController: UIViewController {
     }
     func rotated()
     {
-        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft
+        if(orintation == UIDevice.current.orientation){
+            
+        }else{
+        if (UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft && count == "PotraitValid")
         {
             self.loadappdata()
+            orintation = UIDeviceOrientation.landscapeLeft
             
         }
-        else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight
+        else if (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight && count == "PotraitValid")
         {
               self.loadappdata()
+            orintation = UIDeviceOrientation.landscapeRight
             
-        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+        } else if (UIDevice.current.orientation == UIDeviceOrientation.portrait && count == "PotraitValid")
+        {
               self.loadappdata()
+            orintation = UIDeviceOrientation.portrait
             
         }
         else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
         {
            //  self.loadappdata()
+        }else{
+          
+            }
+        
         }
-               
+        
     }
-
+   
     func loadSetOne(){
         let sideSelectorHeight: CGFloat = 50
         
@@ -393,7 +404,7 @@ class CubicLineViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        count = "PotraitValid"
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CubicLineViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         self.navigationItem.title = "Quick View"

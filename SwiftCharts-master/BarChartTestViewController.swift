@@ -40,8 +40,11 @@ private struct MyQuantity {
         
 //        if (UIDevice.current.orientation.isLandscape)
 //        {
-//    
-   let label = UILabel(frame: CGRect(x: 0, y: screenHeight-80 , width: 180, height: 21))
+//   
+        var orintation : UIDeviceOrientation!  = UIDevice.current.orientation
+
+   let label = UILabel(frame: CGRect(x: 0, y: screenHeight-75 , width: 180, height: 21))
+         var count = String()
 //        }
     
   //  let label = UILabel(frame: CGRect(x: 60, y: 70, width: 300, height: 21))
@@ -87,10 +90,11 @@ private struct MyQuantity {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+         count = "PotraitValid"
         self.navigationItem.title = "Quick View"
         self.tabBarItem.title = "PROD CLASS"
         self.appbecomeactive()
+        self.rotated()
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
@@ -558,7 +562,7 @@ private struct MyQuantity {
             //generator = ChartAxisGeneratorMultiplier(40000)
             generator = ChartAxisGeneratorMultiplier(Double(scale))
             let labelsGenerator = ChartAxisLabelsGeneratorFunc {scalar in
-                return ChartAxisLabel(text: "\(scalar)", settings: labelSettings)
+                return ChartAxisLabel(text: "\(Int(scalar))", settings: labelSettings)
             }
             
             
@@ -594,11 +598,12 @@ private struct MyQuantity {
                 return ChartPointViewBar(p1: p1, p2: p2, width: barWidth, bgColor: nil, settings: settings)
             }
             
+            
             let xModel = ChartAxisModel(axisValues: xValues as! [ChartAxisValue], axisTitleLabel: ChartAxisLabel(text: "PROD CLASS", settings: labelSettings))
             
             
             let frame = view.bounds
-            let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - sideSelectorHeight+10)
+            let chartFrame = CGRect(x: frame.origin.x, y: frame.origin.y+65, width: frame.size.width, height: frame.size.height - sideSelectorHeight-65)
             
             let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
             
@@ -714,27 +719,30 @@ private struct MyQuantity {
     override func viewDidLoad() {
  NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(appbecomeactive),
-            //name: .UIApplicationDidBecomeActive,
-            name: .UIApplicationWillEnterForeground,
-            object: nil)
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(appbecomeactive),
+//            //name: .UIApplicationDidBecomeActive,
+//            name: .UIApplicationWillEnterForeground,
+//            object: nil)
         
         //NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestViewController.devicechange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
         
         func rotated()
         {
-           
-            if UIDevice.current.orientation.isLandscape
+     
+            if(orintation == UIDevice.current.orientation){
+                
+            }
+            else{
+              //  count = "PotraitValid"
+            if (UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft )
             {
-                
+                 orintation = UIDeviceOrientation.landscapeLeft
                 self.chart?.clearView()
-                
                 let chart = barsChart(true)
                 view.addSubview(chart.view)
-                
                 self.chart = chart
                 label.frame = CGRect(x: 50, y: screenWidth-70, width: 180, height: 21)
                 label.font = UIFont(name: label.font.familyName, size: 10)
@@ -751,16 +759,43 @@ NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestVie
                 }else{
                     label.text = "Inventory Value as of 2017-03-31"
                 }
-               
+
+                
             }
-            else if UIDevice.current.orientation.isPortrait
+            else if (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight )
             {
+                 orintation = UIDeviceOrientation.landscapeRight
+                self.chart?.clearView()
+                let chart = barsChart(true)
+                view.addSubview(chart.view)
+                self.chart = chart
+                label.frame = CGRect(x: 50, y: screenWidth-70, width: 180, height: 21)
+                label.font = UIFont(name: label.font.familyName, size: 10)
+                // label.center = CGPoint(x: 160, y: 285)
+                label.textAlignment = .center
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
+                print(timeString)
+                //label.text = Str
+                if(appDelegate.loadSecondSet == true){
+                    label.text = String(timeString)
+                    //label.text = "Inventory Value as of 2017-04-03"
+                }else{
+                    label.text = "Inventory Value as of 2017-03-31"
+                }
+                
+            }
+            else if (UIDevice.current.orientation == UIDeviceOrientation.portrait )
+            {
+                 orintation = UIDeviceOrientation.portrait
+                count = "PotraitValid"
                 self.chart?.clearView()
                 
                 let chart = barsChart(true)
                 view.addSubview(chart.view)
                 self.chart = chart
-                label.frame =  CGRect(x: 0, y: screenHeight-80, width: 180, height: 21)
+                label.frame =  CGRect(x: 0, y: screenHeight-75, width: 180, height: 21)
                 
                 label.font = UIFont(name: label.font.familyName, size: 10)
                 // label.center = CGPoint(x: 160, y: 285)
@@ -777,11 +812,25 @@ NotificationCenter.default.addObserver(self, selector: #selector(BarChartTestVie
                     label.text = "Inventory Value as of 2017-03-31"
                 }
                 print("Portrait")
+                
             }
-      //  }
+            else if  UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
+            {
+              
+            }
+            else
+            {
+                // count = "PotraitValid"
+                
+                }
+            }
+        
+         //   }
+           
+   
 
 }
-
+       
 
 class DirSelector: UIView {
         

@@ -16,9 +16,9 @@ let screenHeight = screenSize.height
 class PieChartTestViewController: UIViewController, PieChartDelegate {
     
     var mainLegendView = UIView()
-    
+    var orintation : UIDeviceOrientation!  = UIDevice.current.orientation
     var chartView: PieChart = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
-    
+     var count = String()
     
     var valueArray = ["298,012","182,430","276,936","135,301","1,246,637"]
     var valueArray1 = ["65,887","87,910","6492","3999","10,912"]
@@ -32,133 +32,172 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
 //        NotificationCenter.default.addObserver(
 //            self,
 //            selector: #selector(appbecmat),
-//            name: .UIApplicationDidBecomeActive,
+//            name: .UIApplicationWillEnterForeground,
 //            object: nil)
+        
+        //self.rotated()
+    }
+    func rotated(){
+        
+        if(orintation == UIDevice.current.orientation){
+            
+        }else{
+        if (UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft && count == "PotraitValid")
+        {
+            orintation = UIDeviceOrientation.landscapeLeft
+            self.LandscapeLeft()
+            
+        }
+        else if (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight && count == "PotraitValid") {
+            self.LandscapeRight()
+            orintation = UIDeviceOrientation.landscapeRight
+            
+        }
+        else if (UIDevice.current.orientation == UIDeviceOrientation.portrait && count == "PotraitValid") {
+            self.Potrait()
+            orintation = UIDeviceOrientation.portrait
+            
+        }else{
+            
+        }
+        }
+    }
+    func rotated11()
+    {
+        if (UIDevice.current.orientation.isValidInterfaceOrientation)
+        {
+           // count = "PotraitValid"
+        if (UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft && count == "PotraitValid")
+        {
+            self.LandscapeLeft()
+            
+        }
+        else if (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight && count == "PotraitValid") {
+            self.LandscapeRight()
+            
+        }
+        else if (UIDevice.current.orientation == UIDeviceOrientation.portrait && count == "PotraitValid") {
+            self.Potrait()
+            
+        }
+        else if (UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown)
+        {
+
+        }else if (UIDevice.current.orientation == UIDeviceOrientation.unknown)
+        {
+            print("unknown")
+             count = "PotraitInvalid"
+        }
+        else if (UIDevice.current.orientation == UIDeviceOrientation.faceUp)
+        {
+            print("faceUp")
+             count = "PotraitInvalid"
+        }else if (UIDevice.current.orientation == UIDeviceOrientation.faceDown)
+        {
+            print("faceDown")
+             count = "PotraitInvalid"
+        }
+        else
+        {
+            
+            print("PotraitValid")
+             count = "PotraitValid"
+            self.rotated()
+          /*  if (UIDevice.current.orientation.isValidInterfaceOrientation)
+            {
+            if (UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft && count == "PotraitValid")
+            {
+                self.LandscapeLeft()
+                
+            }
+            else if (UIDevice.current.orientation == UIDeviceOrientation.landscapeRight && count == "PotraitValid") {
+                self.LandscapeRight()
+
+                
+            }
+            else if (UIDevice.current.orientation == UIDeviceOrientation.portrait && count == "PotraitValid") {
+              // self.Potrait()
+                
+            }
+            }*/
+           
+            }
+        
+        }
+            
+        else
+        {
+             print("invalid")
+        count = "PotraitInvalid"
+           
+        
+        }
         
         
     }
     
-    func rotated()
-    {
-        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
-            var mainLegendView = UIView()
-            chartView.removeFromSuperview()
-            mainLegendView.removeFromSuperview()
-            mainLegendView = UIView()
-            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
-            self.view.addSubview(chartView)
-            chartView.outerRadius = 100
-            chartView.innerRadius = 0
-            // mainLegendView.backgroundColor = UIColor.red
-            
-            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
-            self.view.addSubview(mainLegendView)
-            setLegend1()
-            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-            chartView.delegate = self
-            chartView.models = createModels()
-            
-        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-            var mainLegendView = UIView()
-            chartView.removeFromSuperview()
-            mainLegendView.removeFromSuperview()
-            mainLegendView = UIView()
-            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
-            self.view.addSubview(chartView)
-            chartView.outerRadius = 100
-            chartView.innerRadius = 0
-            // mainLegendView.backgroundColor = UIColor.red
-            
-            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
-            self.view.addSubview(mainLegendView)
-            setLegend1()
-            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-            chartView.delegate = self
-            chartView.models = createModels()
-            
-        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-            chartView.removeFromSuperview()
-            mainLegendView.removeFromSuperview()
-            mainLegendView = UIView()
-            chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
-            self.view.addSubview(chartView)
-            chartView.outerRadius = 150
-            chartView.innerRadius = 0
-            mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
-            self.view.addSubview(mainLegendView)
-            setLegend()
-            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-            chartView.delegate = self
-            chartView.models = createModels()
-            
-        }
-        else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
-        {
-            
-        }
-                /*    if UIDevice.current.orientation.isLandscape
-                    {
-                       
-        //
-        //                self.chart?.clearView()
-        //
-        //                let chart = barsChart(true)
-        //                view.addSubview(chart.view)
-        //
-        //                self.chart = chart
-        //                label.frame = CGRect(x: 50, y: 215, width: 180, height: 200)
-        //                label.font = UIFont(name: label.font.familyName, size: 10)
-        //                // label.center = CGPoint(x: 160, y: 285)
-        //                label.textAlignment = .center
-        //                let dateFormatter = DateFormatter()
-        //                dateFormatter.dateFormat = "yyyy-MM-dd"
-        //                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
-        //                print(timeString)
-        //                //label.text = Str
-        //                if(appDelegate.loadSecondSet == true){
-        //                    label.text = String(timeString)
-        //                    //label.text = "Inventory Value as of 2017-04-03"
-        //                }else{
-        //                    label.text = "Inventory Value as of 2017-03-31"
-        //                }
-        //
-                   }
-                    else if UIDevice.current.orientation.isPortrait
-                    {
-                        
-                        
-
-        //                self.chart?.clearView()
-        //
-        //                let chart = barsChart(true)
-        //                view.addSubview(chart.view)
-        //                self.chart = chart
-        //                label.frame =  CGRect(x: 0, y: 600, width: 180, height: 21)
-        //
-        //                label.font = UIFont(name: label.font.familyName, size: 10)
-        //                // label.center = CGPoint(x: 160, y: 285)
-        //                label.textAlignment = .center
-        //                let dateFormatter = DateFormatter()
-        //                dateFormatter.dateFormat = "yyyy-MM-dd"
-        //                let timeString = "Inventory Value as of \(dateFormatter.string(from: Date() as Date))"
-        //                print(timeString)
-        //                //label.text = Str
-        //                if(appDelegate.loadSecondSet == true){
-        //                    label.text = String(timeString)
-        //                    //label.text = "Inventory Value as of 2017-04-03"
-        //                }else{
-        //                    label.text = "Inventory Value as of 2017-03-31"
-        //                }
-        //                print("Portrait")
-        //            }
-              }*/
+    func LandscapeLeft(){
+        var mainLegendView = UIView()
+        chartView.removeFromSuperview()
+        mainLegendView.removeFromSuperview()
+        mainLegendView = UIView()
+        chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
+        self.view.addSubview(chartView)
+        chartView.outerRadius = 100
+        chartView.innerRadius = 0
+        // mainLegendView.backgroundColor = UIColor.red
+        
+        mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
+        self.view.addSubview(mainLegendView)
+        setLegend1()
+        chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+        chartView.delegate = self
+        chartView.models = createModels()
         
     }
+    func LandscapeRight(){
+        var mainLegendView = UIView()
+        chartView.removeFromSuperview()
+        mainLegendView.removeFromSuperview()
+        mainLegendView = UIView()
+        chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
+        self.view.addSubview(chartView)
+        chartView.outerRadius = 100
+        chartView.innerRadius = 0
+        // mainLegendView.backgroundColor = UIColor.red
+        
+        mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
+        self.view.addSubview(mainLegendView)
+        setLegend1()
+        chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+        chartView.delegate = self
+        chartView.models = createModels()
+    }
+    func Potrait()
+    {
+        chartView.removeFromSuperview()
+        mainLegendView.removeFromSuperview()
+        mainLegendView = UIView()
+        chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
+        self.view.addSubview(chartView)
+        chartView.outerRadius = 150
+        chartView.innerRadius = 0
+        mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
+        self.view.addSubview(mainLegendView)
+        setLegend()
+        chartView.layers = [createCustomViewsLayer(), createTextLayer()]
+        chartView.delegate = self
+        chartView.models = createModels()
+    }
 
-    func appbecmat(){
+
+    func appbecmat()
+    {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        
+         count = "PotraitValid"
                 NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(PieChartTestViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -167,80 +206,46 @@ class PieChartTestViewController: UIViewController, PieChartDelegate {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 226.0/255.0, green: 0.0/255.0, blue: 116.0/255.0, alpha: 1.0)]
         
        // chartView.clearsContextBeforeDrawing
-       
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft
+        {
+            self.LandscapeLeft()
+            
+            
+        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            self.LandscapeRight()
+            
+        }
+        else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            self.Potrait()
+            
+        }
+        else
+        {
+        if ( orintation == UIDeviceOrientation.landscapeLeft)
+        {
+        self.LandscapeLeft()
+        }
+           
+           else if orintation == UIDeviceOrientation.landscapeRight {
+                self.LandscapeRight()
+                
+            }
+        else  if orintation == UIDeviceOrientation.portrait {
+                self.Potrait()
+                
+            }
+            else
+        {
+            
+             self.Potrait()
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
-            var mainLegendView = UIView()
-            chartView.removeFromSuperview()
-            mainLegendView.removeFromSuperview()
-            mainLegendView = UIView()
-            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
-            self.view.addSubview(chartView)
-            chartView.outerRadius = 100
-            chartView.innerRadius = 0
-            // mainLegendView.backgroundColor = UIColor.red
-            
-            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
-            self.view.addSubview(mainLegendView)
-            setLegend1()
-            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-            chartView.delegate = self
-            chartView.models = createModels()
-            
-        } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-            var mainLegendView = UIView()
-            chartView.removeFromSuperview()
-            mainLegendView.removeFromSuperview()
-            mainLegendView = UIView()
-            chartView = PieChart(frame: CGRect(x: 60, y: 70, width:200, height:200));
-            self.view.addSubview(chartView)
-            chartView.outerRadius = 100
-            chartView.innerRadius = 0
-            // mainLegendView.backgroundColor = UIColor.red
-            
-            mainLegendView.frame = CGRect(x: 400, y:70 , width: screenWidth, height: 200)
-            self.view.addSubview(mainLegendView)
-            setLegend1()
-            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-            chartView.delegate = self
-            chartView.models = createModels()
-            
-        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-            chartView.removeFromSuperview()
-            mainLegendView.removeFromSuperview()
-            mainLegendView = UIView()
-            chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
-            self.view.addSubview(chartView)
-            chartView.outerRadius = 150
-            chartView.innerRadius = 0
-            mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
-            self.view.addSubview(mainLegendView)
-            setLegend()
-            chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-            chartView.delegate = self
-            chartView.models = createModels()
-            
-        }
-        else if UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown
-        {
-            
-        }
+        
 
-//        chartView.removeFromSuperview()
-//        mainLegendView.removeFromSuperview()
-//        mainLegendView = UIView()
-//          chartView = PieChart(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-150));
-//        self.view.addSubview(chartView)
-//        chartView.outerRadius = 150
-//        chartView.innerRadius = 0
-//        mainLegendView.frame = CGRect(x: 0, y: screenHeight-220, width: screenWidth, height: 10)
-//        self.view.addSubview(mainLegendView)
-//        setLegend()
-//        chartView.layers = [createCustomViewsLayer(), createTextLayer()]
-//        chartView.delegate = self
-//        chartView.models = createModels()
     }
    
     
